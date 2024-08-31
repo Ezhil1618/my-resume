@@ -76,36 +76,68 @@
             color: var(--primary-color);
         }
 
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
         .header-content h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             animation: slideInDown 1s ease;
         }
 
         .tagline {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             animation: slideInUp 1s ease;
         }
 
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            align-items: center;
+            gap: 1.5rem;
             flex-wrap: wrap;
+            margin-top: 1rem;
         }
 
         .contact-info a {
             color: #fff;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
             transition: all 0.3s ease;
+        }
+
+        .contact-info a i {
+            margin-right: 0.5rem;
         }
 
         .contact-info a:hover {
             color: var(--primary-color);
             transform: scale(1.1);
         }
+      
+       @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
 
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .contact-info {
+                gap: 1rem;
+            }
+
+            .contact-info a {
+                font-size: 1rem;
+            }
+      }
         /* Scroll Me Section */
         .scroll-me {
             height: 100vh;
@@ -783,12 +815,11 @@
             <h1>Ezhil Arasan M</h1>
             <p class="tagline">Innovative HR Professional | Data-Driven Decision Maker | Process Automation Expert</p>
             <div class="contact-info">
-                <a href="mailto:ezhilarasan1618@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="tel:+918098833777"><i class="fas fa-phone"></i></a>
-                <a href="https://www.linkedin.com/in/ezhil-arasan-ez1618/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:ezhilarasan1618@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="tel:+918098833777"><i class="fas fa-phone"></i> Phone</a>
+                <a href="https://www.linkedin.com/in/ezhil-arasan-ez1618/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="#"><i class="fas fa-map-marker-alt"></i> Chennai, India</a>
             </div>
-        </div>
     </header>
 
     <main>
