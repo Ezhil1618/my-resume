@@ -5,640 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ezhil Arasan M - Interactive Digital Resume</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f3f5;
-            overflow-x: hidden;
-        }
-      
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            text-align: center;
-            padding: 60px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-        .header-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.3;
-            z-index: 0;
-            animation: zoomInOut 20s infinite alternate;
-        }
-        @keyframes zoomInOut {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        .tagline {
-            font-size: 1.4em;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeInUp 1s forwards 0.5s;
-        }
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .contact-info a {
-            color: #ecf0f1;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-            padding: 10px 15px;
-            border-radius: 25px;
-            background-color: rgba(255,255,255,0.1);
-        }
-        .contact-info a:hover {
-            background-color: #3498db;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .contact-info i {
-            margin-right: 8px;
-        }
-        section {
-            background-color: #fff;
-            padding: 40px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        section:hover {
-            transform: translateY(-5px);
-        }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: #e74c3c;
-            transition: width 0.3s ease;
-        }
-        section:hover h2::after {
-            width: 100px;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        /* CSS will be added in the next part */
     </style>
 </head>
 <body>
-  <section class="scroll-me">
-  <div class="container">
-    <div class="scroll-me-content">
-      <h2 class="hello animate__animated animate__bounceInDown">Hello</h2>
-      <hr class="animate__animated animate__fadeInLeft" style="border-top: 2px solid #e74c3c; width: 50px; margin: 10px auto;">
-      <h2 class="welcome-message">Welcome to My Digital Resume</h2>
-      <p>Scroll down to explore my professional journey</p>
+    <div class="scroll-me">
+        <div class="scroll-content">
+            <h1 class="glitch" data-text="Hello">Hello</h1>
+            <p class="subtitle">Welcome to My Interactive Resume</p>
+            <div class="mouse">
+                <div class="mouse-wheel"></div>
+            </div>
+            <p class="scroll-text">Scroll to Explore</p>
+        </div>
     </div>
-    <div class="scroll-me-mouse">
-      <div class="scroll-me-mouse-icon">
-        <span></span>
-      </div>
-      <div class="scroll-me-mouse-message">
-        <span class="scroll-me-message-1">scroll me</span>
-        <span class="scroll-me-message-2">↓</span>
-      </div>
-    </div>
-  </div>
-</section>
-    <header>
-        <div class="header-bg"></div>
+
+    <header id="home">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
         <div class="header-content">
-            <h1 class="animate__animated animate__fadeInDown">Ezhil Arasan M</h1>
+            <h1>Ezhil Arasan M</h1>
             <p class="tagline">Innovative HR Professional | Data-Driven Decision Maker | Process Automation Expert</p>
-            <div class="contact-info animate__animated animate__fadeInUp">
-                <a href="mailto:ezhilarasan1618@gmail.com"><i class="fas fa-envelope"></i> ezhilarasan1618@gmail.com</a>
-                <a href="tel:+918098833777"><i class="fas fa-phone"></i>+91 80988 33777</a>
-                <a href="https://www.linkedin.com/in/ezhil-arasan-ez1618/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <div class="contact-info">
+                <a href="mailto:ezhilarasan1618@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+918098833777"><i class="fas fa-phone"></i></a>
+                <a href="https://www.linkedin.com/in/ezhil-arasan-ez1618/" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="#"><i class="fas fa-map-marker-alt"></i> Chennai, India</a>
             </div>
         </div>
     </header>
 
-    <div class="container">
-        <section id="professional-summary" class="animate__animated animate__fadeIn">
-            <h2>Professional Summary</h2>
-            <p>Innovative HR professional with over 5 years of experience in HR Business Partnering and HR Shared Services. Expertise in HR analytics, process automation, and strategic HR initiatives. Proven track record in implementing data-driven HR solutions and managing impactful projects. Skilled in employee experience design and aligning HR strategies with business goals. Holds an MBA in HR and Marketing, with certifications in Strategic Human Resource Management and HR Analytics. TEDx speaker.</p>
-        </section>
-
-        <!-- More sections will be added in subsequent parts -->
+    <main>
+        <section id="about" class="visible">
+    <div class="about-image">
+        <img src="https://media.licdn.com/dms/image/v2/D5603AQF9mcxXnoKlCw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1695451671090?e=1730332800&v=beta&t=Y9DeclsNCgnYMdpnmZQyzftfdpX4j545YGkfOrAlZpw" alt="Ezhil Arasan M">
     </div>
-
-    <!-- Scripts will be added in the final part -->
-</body>
-</html>
-<style>
-        .job, .project {
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        .job:hover, .project:hover {
-            background-color: #e9ecef;
-            transform: scale(1.02);
-        }
-        .job h3, .project h3 {
-            color: #2980b9;
-            margin-bottom: 10px;
-        }
-        .company, .project-details {
-            font-style: italic;
-            color: #7f8c8d;
-            margin-bottom: 15px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 8px;
-            position: relative;
-        }
-        li::before {
-            content: '▹';
-            color: #3498db;
-            position: absolute;
-            left: -20px;
-        }
-  .scroll-me {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #2c3e50;
-  color: #ecf0f1;
-}
-
-.scroll-me-content {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.scroll-me-content h2 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-}
-
-.scroll-me-mouse {
-  width: 50px;
-  height: 90px;
-  border: 3px solid #ecf0f1;
-  border-radius: 60px;
-  position: relative;
-  margin: 0 auto;
-}
-
-.scroll-me-mouse-icon {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #ecf0f1;
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: scrollAnimation 2s infinite;
-}
-.hello {
-    font-size: 2.5em;
-    color: #ecf0f1;
-    text-align: center;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-
-/* Additional animations */
-.scroll-me h2 {
-    animation-delay: 0.5s;
-}
-
-.scroll-me p {
-    animation-delay: 1s;
-}
-
-.scroll-me-mouse {
-    animation-delay: 1.5s;
-}
-
-@keyframes scrollAnimation {
-  0% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(20px);
-  }
-}
-
-.scroll-me-mouse-message {
-  text-align: center;
-  margin-top: 110px;
-}
-
-.scroll-me-mouse-message span {
-  display: block;
-  font-size: 14px;
-  color: #ecf0f1;
-}
-
-.scroll-me-message-2 {
-  animation: arrowBlink 1s infinite;
-}
-.welcome-message {
-    color: #3498db; /* Change this to your desired color */
-    font-size: 2.5em;
-    text-align: center;
-    margin-bottom: 20px;
-    animation-delay: 0.5s;
-}
-
-/* Additional animations */
-.scroll-me p {
-    animation-delay: 1s;
-}
-
-.scroll-me-mouse {
-    animation-delay: 1.5s;
-}
-
-@keyframes arrowBlink {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-    </style>
-
-    <section id="experience">
-        <h2>Professional Experience</h2>
-        <div class="job animate__animated animate__fadeInLeft">
-            <h3>HR Shared Services Specialist</h3>
-            <p class="company">Intellect Design Arena Ltd, Chennai, IN | July 2022 - Present</p>
-            <ul>
-                <li>Supported HR Shared Services for 6000+ global employees across multiple countries.</li>
-                <li>Led and contributed to various HR projects focused on process improvement and resource management.</li>
-                <li>Contributed to digital transformation projects, reducing administrative time by 20%.</li>
-                <li>Automated HR processes to support data-driven decision-making.</li>
-                <li>Assisted in global employee wellness program implementation, reducing absenteeism by 15%.</li>
-                <li>Managed global medical insurance policies and optimized benefits.</li>
-                <li>Contributed to data analytics projects for strategic healthcare policy formulation.</li>
-                <li>Participated in standardizing onboarding protocols across international locations.</li>
-                <li>Supported C-suite executives with HR data and insights.</li>
-                <li>Helped optimize onboarding procedures, reducing new hire time-to-productivity by 25%.</li>
-            </ul>
-        </div>
-        <div class="job animate__animated animate__fadeInRight">
-            <h3>Deputy Manager HRBP</h3>
-            <p class="company">Reliance Jio Infocomm Limited, Madurai, IN | February 2019 - July 2022</p>
-            <ul>
-                <li>Managed HR services for 800+ employees, focusing on talent management and succession planning.</li>
-                <li>Developed data-driven retention strategy, reducing turnover by 30% in key departments.</li>
-                <li>Implemented performance feedback system, improving quality metrics by 25%.</li>
-                <li>Aligned HR initiatives with business goals, enhancing productivity by 18% for a 500+ workforce.</li>
-                <li>Utilized HR analytics to reduce premature attrition by 15%.</li>
-                <li>Launched employee engagement programs, correlating with a 15% increase in customer satisfaction.</li>
-                <li>Designed region-specific onboarding curriculum, increasing new hire productivity by 20%.</li>
-                <li>Enhanced employer brand through multimedia campaigns.</li>
-                <li>Streamlined talent acquisition processes.</li>
-                <li>Advised executive management on performance evaluations and disciplinary actions.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="key-projects">
-        <h2>Key Projects</h2>
-        <div class="project animate__animated animate__fadeInUp">
-            <h3>Company Profile Generation for Resource Management</h3>
-            <p class="project-details">Intellect Design Arena Ltd | 2023 - Present</p>
-            <ul>
-                <li>Spearheaded the development of a comprehensive company profile system for employees.</li>
-                <li>Improved resource allocation and management through enhanced visibility of employee skills and experiences.</li>
-                <li>Streamlined project staffing processes, leading to more efficient team compositions.</li>
-            </ul>
-        </div>
-        <div class="project animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-            <h3>HR Process Automation Initiative</h3>
-            <p class="project-details">Intellect Design Arena Ltd | 2023</p>
-            <ul>
-                <li>Key team member in developing and implementing automated systems for HR processes.</li>
-                <li>Contributed to a 40% reduction in processing time and a 30% increase in data accuracy across operations.</li>
-            </ul>
-        </div>
-        <div class="project animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-            <h3>Early Attrition Reduction Initiative</h3>
-            <p class="project-details">Reliance Jio Infocomm Ltd | March 2020 - April 2020</p>
-            <ul>
-                <li>Implemented data-driven solutions to significantly reduce early attrition rates.</li>
-                <li>Enhanced onboarding, mentorship programs, and feedback systems.</li>
-            </ul>
-        </div>
-    </section>
-<style>
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-        }
-        .skill {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 0.9em;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .skill:hover {
-            transform: translateY(-5px) rotate(5deg);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
-        }
-        #accomplishments {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            text-align: center;
-            padding: 60px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .accomplishment {
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-        }
-        .accomplishment.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .accomplishment i {
-            font-size: 2em;
-            margin-bottom: 10px;
-            color: #3498db;
-        }
-.section-title {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 40px;
-  color: #3498db;
-  font-size: 2.5em;
-}
-
-    </style>
-
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <div class="skill animate__animated animate__zoomIn">HR Shared Services</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 0.1s;">HR Analytics</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 0.2s;">Data-Driven Decision Making</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 0.3s;">Process Automation</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 0.4s;">Strategic HR Planning</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 0.5s;">Employee Experience Design</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 0.6s;">Performance Management Systems</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 0.7s;">Talent Retention Strategies</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 0.8s;">Wellness Program Implementation</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 0.9s;">Change Management</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 1s;">Cross-Cultural Communication</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 1.1s;">Compliance Management</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 1.2s;">Project Management</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 1.3s;">Resource Allocation</div>
-            <div class="skill animate__animated animate__zoomIn" style="animation-delay: 1.4s;">Employee Profiling</div>
-        </div>
-    </section>
-
-    <section id="accomplishments">
-        <div class="container">
-            <h2 class="section-title">Awards and Accomplishments</h2>
-            <div class="accomplishment">
-                <i class="fas fa-trophy"></i>
-                <h3>TEDx Speaker</h3>
-                <p>Delivered a talk on "The Curious Case of Gaming"</p>
-            </div>
-            <div class="accomplishment">
-                <i class="fas fa-chart-line"></i>
-                <h3>Attrition Reduction</h3>
-                <p>Reduced early attrition rates by 15% through targeted HR strategies</p>
-            </div>
-            <div class="accomplishment">
-                <i class="fas fa-award"></i>
-                <h3>Star Performer</h3>
-                <p>Received 'Star Performer' accolades for Q3 and Q4 (2020) with 100% SLA in HR operations</p>
-            </div>
-            <div class="accomplishment">
-                <i class="fas fa-star"></i>
-                <h3>Best Area of the Year</h3>
-                <p>Secured 'Best Area of the Year' award, ranking first in comprehensive scorecard metrics</p>
-            </div>
-               <div class="accomplishment">
-               <i class="fas fa-lightbulb"></i>
-               <h3>Innovation Award</h3>
-               <p>Received an award for innovation from Intellect Design Arena for efforts in automation in Q4 2023</p>
-</div>
+    <div class="about-content">
+        <h2>About Me</h2>
+        <p>Innovative HR professional with over 5 years of experience in HR Business Partnering and HR Shared Services. Expertise in HR analytics, process automation, and strategic HR initiatives. Proven track record in implementing data-driven HR solutions and managing impactful projects. Skilled in employee experience design and aligning HR strategies with business goals.</p>
     </div>
-    </section>
+</section>
 
-    <script>
-        // Interactive skill bubbles
-        const skillsContainer = document.querySelector('.skills-container');
-        skillsContainer.addEventListener('click', (e) => {
-            if (e.target.classList.contains('skill')) {
-                e.target.classList.toggle('active');
-                if (e.target.classList.contains('active')) {
-                    e.target.style.backgroundColor = '#e74c3c';
-                    e.target.style.transform = 'scale(1.1) rotate(-5deg)';
-                } else {
-                    e.target.style.backgroundColor = '#3498db';
-                    e.target.style.transform = 'scale(1) rotate(0deg)';
-                }
-            }
-        });
-
-        // Animate accomplishments on scroll
-        const accomplishments = document.querySelectorAll('.accomplishment');
-        const animateAccomplishments = () => {
-            accomplishments.forEach(accomplishment => {
-                const accomplishmentTop = accomplishment.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (accomplishmentTop < windowHeight * 0.75) {
-                    accomplishment.classList.add('visible');
-                }
-            });
-        };
-        window.addEventListener('scroll', animateAccomplishments);
-        animateAccomplishments(); // Initial check on page load
-    </script>
-<style>
-    .timeline {
-        position: relative;
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 40px 0;
-    }
-    .timeline::after {
-        content: '';
-        position: absolute;
-        width: 4px;
-        background-color: #3498db;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -2px;
-    }
-    .timeline-item {
-        padding: 10px 40px;
-        position: relative;
-        background-color: inherit;
-        width: 50%;
-        box-sizing: border-box;
-    }
-    .timeline-item::after {
-        content: '';
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background-color: #3498db;
-        border: 4px solid #fff;
-        top: 15px;
-        border-radius: 50%;
-        z-index: 1;
-    }
-    .timeline-item:nth-child(odd) {
-        left: 0;
-        padding-right: 50px;
-    }
-    .timeline-item:nth-child(even) {
-        left: 50%;
-        padding-left: 50px;
-    }
-    .timeline-item:nth-child(odd)::after {
-        right: -14px;
-    }
-    .timeline-item:nth-child(even)::after {
-        left: -14px;
-    }
-    .timeline-content {
-        padding: 20px;
-        background-color: #f8f9fa;
-        position: relative;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .timeline-content h3 {
-        margin-top: 0;
-        color: #2c3e50;
-        font-size: 1.2em;
-    }
-    .timeline-content p {
-        margin-bottom: 0;
-        color: #7f8c8d;
-        font-size: 0.9em;
-    }
-    
-    @media screen and (max-width: 767px) {
-    .timeline::after {
-        left: 31px;
-    }
-    .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-    }
-    .timeline-item::after {
-        left: 15px;
-    }
-    .timeline-item:nth-child(even) {
-        left: 0%;
-    }
-    .timeline-item:nth-child(odd) {
-        left: 0%;
-    }
-    .timeline-item:nth-child(odd)::after {
-        left: 15px;
-    }
-    .timeline-item:nth-child(even)::after {
-        left: 15px;
-    }
-    .timeline-content {
-        width: 100%;
-    }
-  }
-</style>
-
+<section id="experience">
+    <h2>Professional Experience</h2>
+    <div class="experience-item">
+        <h3>HR Shared Services Specialist</h3>
+        <p class="company">Intellect Design Arena Ltd, Chennai, IN | July 2022 - Present</p>
+        <ul>
+            <li>Supported HR Shared Services for 6000+ global employees across multiple countries.</li>
+            <li>Led and contributed to various HR projects focused on process improvement and resource management.</li>
+            <li>Contributed to digital transformation projects, reducing administrative time by 20%.</li>
+            <li>Automated HR processes to support data-driven decision-making.</li>
+        </ul>
+    </div>
+    <div class="experience-item">
+        <h3>Deputy Manager HRBP</h3>
+        <p class="company">Reliance Jio Infocomm Limited, Madurai, IN | February 2019 - July 2022</p>
+        <ul>
+            <li>Managed HR services for 800+ employees, focusing on talent management and succession planning.</li>
+            <li>Developed data-driven retention strategy, reducing turnover by 30% in key departments.</li>
+            <li>Implemented performance feedback system, improving quality metrics by 25%.</li>
+            <li>Aligned HR initiatives with business goals, enhancing productivity by 18% for a 500+ workforce.</li>
+        </ul>
+    </div>
+</section>
+      
+<!-- Education Section -->
 <section id="education">
     <h2>Education</h2>
     <div class="timeline">
-        <div class="timeline-item">
+        <div class="timeline-item" onclick="togglePopup(this)">
             <div class="timeline-content">
                 <h3>Post Graduate Certificate, Strategic Human Resource Management (SHRM)</h3>
                 <p>Indian Institute of Management Tiruchirappalli (IIM - Trichy) | January 2024</p>
             </div>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" onclick="togglePopup(this)">
             <div class="timeline-content">
                 <h3>Master of Business Administration (MBA), Human Resources and Marketing</h3>
                 <p>Jansons School of Business, Coimbatore | May 2019</p>
             </div>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item" onclick="togglePopup(this)">
             <div class="timeline-content">
                 <h3>Bachelor of Engineering (B.E), Civil Engineering</h3>
                 <p>Panimalar Engineering College, Anna University Chennai | December 2016</p>
@@ -647,311 +105,1219 @@
     </div>
 </section>
 
-<script>
-    // Animate timeline items
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const animateTimeline = () => {
-        timelineItems.forEach(item => {
-            const itemTop = item.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (itemTop < windowHeight * 0.75) {
-                item.style.opacity = '1';
-                item.style.transform = 'translateX(0)';
+<!-- Skills Section -->
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-container">
+        <div class="skill-category">
+            <div class="skill-item">HR Analytics</div>
+            <div class="skill-item">Talent Acquisition</div>
+            <div class="skill-item">Employee Relations</div>
+            <div class="skill-item">Performance Management</div>
+            <div class="skill-item">Employee Engagement</div>
+        </div>
+        <div class="skill-category">
+            <div class="skill-item">HRIS Management</div>
+            <div class="skill-item">Data Analysis</div>
+            <div class="skill-item">Process Automation</div>
+            <div class="skill-item">Workforce Planning</div>
+            <div class="skill-item">Talent Management</div>
+        </div>
+        <div class="skill-category">
+            <div class="skill-item">Strategic Planning</div>
+            <div class="skill-item">Change Management</div>
+            <div class="skill-item">Conflict Resolution</div>
+            <div class="skill-item">Leadership Development</div>
+            <div class="skill-item">Benefits Administration</div>
+        </div>
+    </div>
+</section>
+      
+<!-- Get in Touch Section -->
+<section id="contact">
+    <h2>Get in Touch</h2>
+    <div class="contact-container">
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <p>ezhilarasan1618@gmail.com</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <p>+91 80988 33777</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Chennai - India</p>
+            </div>
+        </div>
+        <div class="contact-actions">
+            <a href="mailto:ezhilarasan1618@gmail.com" class="btn">Send Mail</a>
+            <a href="path/to/your/resume.pdf" class="btn" download>Download Resume</a>
+        </div>
+    </div>
+</section>
+      
+<!-- Certifications Section -->
+<section id="certifications">
+    <h2>Certifications</h2>
+    <div class="certifications-container">
+        <div class="certification-item" onclick="togglePopup(this)">
+            <i class="fas fa-certificate"></i>
+            <h3>Transactional Analysis 101</h3>
+            <p>International Transactional Analysis Association (ITAA)</p>
+        </div>
+        <div class="certification-item" onclick="togglePopup(this)">
+            <i class="fas fa-language"></i>
+            <h3>Cambridge English: Business Higher, C1 Level</h3>
+            <p>University of Cambridge</p>
+        </div>
+        <div class="certification-item" onclick="togglePopup(this)">
+            <i class="fas fa-chart-bar"></i>
+            <h3>HR Analytics</h3>
+            <p>Indian Institute of Management Rohtak</p>
+        </div>
+    </div>
+</section>
+
+<!-- Notable Projects Section -->
+<section id="projects">
+    <h2>Notable Projects</h2>
+    <div class="projects-container">
+        <div class="project-item">
+            <h3>HR Process Automation Initiative</h3>
+            <p>Led a team in developing and implementing automated systems for HR processes, resulting in a 40% reduction in processing time and a 30% increase in data accuracy.</p>
+        </div>
+        <div class="project-item">
+            <h3>Employee Wellness Program</h3>
+            <p>Spearheaded the implementation of a global employee wellness program, reducing absenteeism by 15% and improving overall employee satisfaction.</p>
+        </div>
+        <div class="project-item">
+            <h3>Talent Retention Strategy</h3>
+            <p>Developed and implemented a data-driven retention strategy, reducing turnover by 30% in key departments and improving employee engagement scores.</p>
+        </div>
+    </div>
+</section>
+    
+<section id="tedx-talk">
+    <h2>TEDx Talk: The Curious Case of Gaming</h2>
+    <div class="tedx-container">
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/K70eu5gl4qQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="tedx-description">
+            <p>In this TEDx talk, I delve into the positive aspects of gaming, challenging stereotypes about gaming culture. Drawing from personal experiences and research, I discuss how gaming fosters social connections, builds trust, and offers emotional support—insights that have profoundly influenced my HR strategies. This talk reflects my innovative approach to HR, showcasing how unconventional ideas, can enhance workplace dynamics.</p>
+        </div>
+    </div>
+    <div class="tedx-facts">
+        <div class="fact">
+            <i class="fas fa-users"></i>
+            <span>200+ Attendees</span>
+        </div>
+        <div class="fact">
+            <i class="fas fa-globe"></i>
+            <span>Global Audience Reach</span>
+        </div>
+        <div class="fact">
+            <i class="fas fa-lightbulb"></i>
+            <span>Innovative HR Concepts</span>
+        </div>
+    </div>
+</section>
+
+<!-- Future Vision Section -->
+<section id="future-vision">
+    <h2>Future Vision: The Evolution of HR</h2>
+    <div class="vision-container">
+        <div class="vision-intro">
+            <p>As an HR professional at the forefront of innovation, I envision a transformative future for Human Resources and workplace dynamics. Here are key areas where I believe HR will evolve and how I aim to contribute to this evolution:</p>
+        </div>
+        <div class="vision-grid">
+            <div class="vision-item">
+                <i class="fas fa-robot"></i>
+                <h3>AI-Driven HR Processes</h3>
+                <p>Leveraging artificial intelligence to streamline recruitment, performance management, and employee engagement, while maintaining a human-centric approach.</p>
+            </div>
+            <div class="vision-item">
+                <i class="fas fa-vr-cardboard"></i>
+                <h3>Virtual and Augmented Reality in Training</h3>
+                <p>Implementing VR and AR technologies to create immersive, effective training experiences that enhance skill development and knowledge retention.</p>
+            </div>
+            <div class="vision-item">
+                <i class="fas fa-chart-line"></i>
+                <h3>Data-Driven Decision Making</h3>
+                <p>Advancing the use of HR analytics to make more informed, predictive decisions about workforce planning, talent management, and organizational design.</p>
+            </div>
+            <div class="vision-item">
+                <i class="fas fa-users-cog"></i>
+                <h3>Agile HR Methodologies</h3>
+                <p>Adapting agile principles from software development to HR practices, fostering flexibility, rapid iteration, and continuous improvement in HR strategies.</p>
+            </div>
+        </div>
+        <div class="vision-statement">
+            <h3>My Commitment</h3>
+            <p>I am dedicated to pioneering these advancements in HR, continually learning and adapting to new technologies and methodologies. My goal is to create workplaces that are not only efficient and productive but also deeply human-centric and fulfilling for employees.</p>
+        </div>
+    </div>
+</section>
+      
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Ezhil Arasan M. All rights reserved.</p>
+    </footer>
+
+   <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Reveal sections on scroll
+    const revealSection = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
         });
     };
 
-    // Set initial state for timeline items
-    timelineItems.forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform = index % 2 === 0 ? 'translateX(-50px)' : 'translateX(50px)';
-        item.style.transition = 'all 0.5s ease';
+    const sectionObserver = new IntersectionObserver(revealSection, {
+        root: null,
+        threshold: 0.15,
     });
 
-    // Add event listeners
-    window.addEventListener('scroll', animateTimeline);
-    window.addEventListener('load', animateTimeline);
+    document.querySelectorAll('section').forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    // Sticky navigation
+    const nav = document.querySelector('nav');
+    const navTop = nav.offsetTop;
+
+    function stickyNavigation() {
+        if (window.scrollY >= navTop) {
+            document.body.style.paddingTop = nav.offsetHeight + 'px';
+            document.body.classList.add('fixed-nav');
+        } else {
+            document.body.style.paddingTop = 0;
+            document.body.classList.remove('fixed-nav');
+        }
+    }
+
+    window.addEventListener('scroll', stickyNavigation);
+
+    // Scroll to explore animation
+    document.querySelector('.scroll-me').addEventListener('click', () => {
+        window.scrollTo({
+            top: window.innerHeight,
+            behavior: 'smooth'
+        });
+    });
 </script>
+  
+  <script>
+    // Animate skill bars
+    const skillItems = document.querySelectorAll('.skill-item');
+    const animateSkills = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillLevel = entry.target.getAttribute('data-skill');
+                entry.target.style.setProperty('--skill-level', `${skillLevel}%`);
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const skillObserver = new IntersectionObserver(animateSkills, {
+        threshold: 0.5,
+    });
+
+    skillItems.forEach(item => {
+        skillObserver.observe(item);
+    });
+
+    // Handle form submission
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you would typically send the form data to a server
+        alert('Thank you for your message! I will get back to you soon.');
+        this.reset();
+    });
+
+    // Add parallax effect to timeline
+    window.addEventListener('scroll', () => {
+        const timeline = document.querySelector('.timeline');
+        const speed = 0.5;
+        const yPos = -(window.pageYOffset * speed);
+        timeline.style.backgroundPosition = `50% ${yPos}px`;
+    });
+</script>
+  
+ <script>
+    // Animate certification items
+    const certificationItems = document.querySelectorAll('.certification-item');
+    const animateCertifications = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const certificationObserver = new IntersectionObserver(animateCertifications, {
+        threshold: 0.5,
+    });
+
+    certificationItems.forEach(item => {
+        item.style.opacity = 0;
+        item.style.transform = 'translateY(20px)';
+        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        certificationObserver.observe(item);
+    });
+
+    // Animate project items
+    const projectItems = document.querySelectorAll('.project-item');
+    const animateProjects = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated', 'fadeInUp');
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const projectObserver = new IntersectionObserver(animateProjects, {
+        threshold: 0.5,
+    });
+
+    projectItems.forEach(item => {
+        projectObserver.observe(item);
+    });
+
+    // Add tilt effect to portfolio items
+    VanillaTilt.init(document.querySelectorAll(".portfolio-item"), {
+        max: 25,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.5,
+    });
+ 
+   
+</script> 
+  
+ <script>
+    // Animate TEDx section on scroll
+    const tedxSection = document.getElementById('tedx-talk');
+    const animateTEDx = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const tedxObserver = new IntersectionObserver(animateTEDx, {
+        threshold: 0.2,
+    });
+
+    tedxObserver.observe(tedxSection);
+</script>
+  
+<script>
+    // Animate vision items and statement on scroll
+    const visionElements = document.querySelectorAll('.vision-item, .vision-statement');
+    const animateVision = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const visionObserver = new IntersectionObserver(animateVision, {
+        threshold: 0.2,
+    });
+
+    visionElements.forEach(element => {
+        visionObserver.observe(element);
+    });
+</script> 
+  
+<script>
+    function togglePopup(element) {
+        element.classList.toggle('active');
+    }
+
+    // Add animation for sections on scroll
+    const sections = document.querySelectorAll('section');
+    const observerOptions = {
+        root: null,
+        threshold: 0.1,
+        rootMargin: "0px"
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+</script>
+  
+</body>
+</html>
+
+
 <style>
-#accomplishments {
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  padding: 60px 0;
-  position: relative;
-  overflow: hidden;
-}
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-.accomplishments-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --text-color: #333;
+        --bg-color: #f0f3f5;
+    }
 
-.video-container {
-  flex-basis: 100%;
-  margin-bottom: -550px;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-.video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  height: 0;
-  overflow: hidden;
-  max-width: 100%;
-}
+    body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        overflow-x: hidden;
+    }
 
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+    .scroll-me {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--secondary-color);
+        color: #fff;
+    }
 
-.tedx-description {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 20px;
-  transition: all 0.3s ease;
-}
+    .scroll-content {
+        text-align: center;
+    }
 
-.tedx-description:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
+    .glitch {
+        font-size: 5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+        text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+            0.025em 0.04em 0 #fffc00;
+        animation: glitch 725ms infinite;
+    }
 
-.accomplishment {
-  flex-basis: calc(50% - 20px);
-  margin-bottom: 40px;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
+    .glitch span {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 
-.accomplishment:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
+    .glitch span:first-child {
+        animation: glitch 500ms infinite;
+        clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+        transform: translate(-0.04em, -0.03em);
+        opacity: 0.75;
+    }
 
-.accomplishment i {
-  font-size: 2em;
-  margin-bottom: 15px;
-  color: #3498db;
-}
+    .glitch span:last-child {
+        animation: glitch 375ms infinite;
+        clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+        transform: translate(0.04em, 0.03em);
+        opacity: 0.75;
+    }
 
-.accomplishment h3 {
-  margin-top: 0;
-  color: #ecf0f1;
-}
+    @keyframes glitch {
+        0% {
+            text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                0.025em 0.04em 0 #fffc00;
+        }
+        15% {
+            text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                0.025em 0.04em 0 #fffc00;
+        }
+        16% {
+            text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                -0.05em -0.05em 0 #fffc00;
+        }
+        49% {
+            text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                -0.05em -0.05em 0 #fffc00;
+        }
+        50% {
+            text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                0 -0.04em 0 #fffc00;
+        }
+        99% {
+            text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                0 -0.04em 0 #fffc00;
+        }
+        100% {
+            text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
+                -0.04em -0.025em 0 #fffc00;
+        }
+    }
 
-.accomplishment p {
-  margin-bottom: 0;
-  color: #bdc3c7;
-}
+    .subtitle {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        opacity: 0;
+        animation: fadeIn 1s ease-out 1s forwards;
+    }
 
-@media (max-width: 768px) {
-  .accomplishment {
-    flex-basis: 100%;
-  }
-}
+    .mouse {
+        width: 50px;
+        height: 90px;
+        border: 3px solid #fff;
+        border-radius: 60px;
+        position: relative;
+        margin: 2rem auto;
+    }
+
+    .mouse-wheel {
+        width: 8px;
+        height: 8px;
+        background-color: #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: scroll 1.5s infinite;
+    }
+
+    @keyframes scroll {
+        0% {
+            opacity: 0;
+            transform: translate(-50%, 0);
+        }
+        50% {
+            opacity: 1;
+            transform: translate(-50%, 20px);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(-50%, 40px);
+        }
+    }
+
+    .scroll-text {
+        font-size: 1rem;
+        opacity: 0;
+        animation: fadeIn 1s ease-out 2s forwards;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* More styles will be added in subsequent parts */
 </style>
 
-<section id="accomplishments">
-  <div class="accomplishments-container">
-    <div class="video-container">
-      <h2>TEDx Talk: The Curious Case of Gaming</h2>
-      <div class="video-wrapper">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/K70eu5gl4qQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="tedx-description">
-        <p>In my TEDx talk, "The Curious Case of Gaming," I explore how gaming, often seen as unproductive, can actually foster meaningful social connections—an insight that parallels my work in HR. I draw on personal experiences to show how gaming can build trust, strengthen relationships, and offer emotional support, much like effective HR strategies. This perspective informs my approach to HR, where I focus on cultivating a balanced environment that nurtures both professional growth and personal well-being, leveraging unconventional tools like gaming to enhance workplace dynamics.</p>
-      </div>
-    </div>
-
-    <div class="accomplishment">
-      <i class="fas fa-chart-line"></i>
-      <h3>Attrition Reduction</h3>
-      <p>Reduced early attrition rates by 15% through targeted HR strategies</p>
-    </div>
-
-    <div class="accomplishment">
-      <i class="fas fa-award"></i>
-      <h3>Star Performer</h3>
-      <p>Received 'Star Performer' accolades for Q3 and Q4 (2020) with 100% SLA in HR operations</p>
-    </div>
-
-    <div class="accomplishment">
-      <i class="fas fa-star"></i>
-      <h3>Best Area of the Year</h3>
-      <p>Secured 'Best Area of the Year' award, ranking first in comprehensive scorecard metrics</p>
-    </div>
-  </div>
-</section>
-
-<script>
-// Animate accomplishments on scroll
-const accomplishments = document.querySelectorAll('.accomplishment, .tedx-description');
-
-const animateAccomplishments = () => {
-  accomplishments.forEach(accomplishment => {
-    const accomplishmentTop = accomplishment.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-    if (accomplishmentTop < windowHeight * 0.75) {
-      accomplishment.style.opacity = '1';
-      accomplishment.style.transform = 'translateY(0)';
-    }
-  });
-};
-
-// Set initial state for accomplishments
-accomplishments.forEach(accomplishment => {
-  accomplishment.style.opacity = '0';
-  accomplishment.style.transform = 'translateY(50px)';
-  accomplishment.style.transition = 'all 0.5s ease';
-});
-
-// Add event listeners
-window.addEventListener('scroll', animateAccomplishments);
-window.addEventListener('load', animateAccomplishments);
-</script>
 <style>
-    #certifications, #conclusion {
-        padding: 60px 0;
-        background-color: #ffffff;
+    /* Header and Navigation Styles */
+    header {
+        background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        color: #fff;
+        padding: 2rem 0;
+        position: relative;
+        overflow: hidden;
     }
-    .certifications-container, .conclusion-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-    .certifications-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-    }
-    .certification-card {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        padding: 25px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(44, 62, 80, 0.9);
+        z-index: 1000;
         transition: all 0.3s ease;
     }
-    .certification-card:hover {
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        padding: 1rem 0;
+    }
+
+    nav ul li {
+        margin: 0 1rem;
+    }
+
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    .header-content {
+        text-align: center;
+        padding: 4rem 2rem;
+    }
+
+    .header-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        animation: slideInDown 1s ease;
+    }
+
+    .tagline {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        animation: slideInUp 1s ease;
+    }
+
+    .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .contact-info a {
+        color: #fff;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .contact-info a:hover {
+        color: var(--primary-color);
+        transform: scale(1.1);
+    }
+
+    /* Main Content Styles */
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    section {
+        margin-bottom: 4rem;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.5s ease;
+    }
+
+    section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--secondary-color);
+        position: relative;
+    }
+
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+
+    section:hover h2::after {
+        width: 100px;
+    }
+
+    /* About Section */
+    #about {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .about-image {
+        flex: 1;
+        text-align: center;
+    }
+
+    .about-image img {
+        max-width: 100%;
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-content {
+        flex: 2;
+    }
+
+    /* Experience Section */
+    .experience-item {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .experience-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .experience-item h3 {
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .experience-item .company {
+        font-style: italic;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .experience-item ul {
+        padding-left: 1.5rem;
+    }
+
+    /* Add more section styles as needed */
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .header-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .tagline {
+            font-size: 1rem;
+        }
+
+        #about {
+            flex-direction: column;
+        }
+
+        .about-image, .about-content {
+            flex: 1;
+        }
+    }
+
+    /* Animations */
+    @keyframes slideInDown {
+        from {
+            transform: translateY(-100px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            transform: translateY(100px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>
+
+<style>
+    /* Education Styles */
+    .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: #3498db;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+    }
+
+    .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .timeline-item::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: -17px;
+        background-color: #f8f9fa;
+        border: 4px solid #3498db;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 50%;
+    }
+
+    .timeline-item:nth-child(odd)::after {
+        left: -16px;
+    }
+
+    .timeline-content {
+        padding: 20px 30px;
+        background-color: white;
+        position: relative;
+        border-radius: 6px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .timeline-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .timeline-item:hover .timeline-content {
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Skills Styles */
+    .skills-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .skill-category {
+        flex: 1;
+        min-width: 250px;
+        text-align: center;
+    }
+
+    .skill-item {
+        background-color: #3498db;
+        color: white;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .skill-item:hover {
+        background-color: #2980b9;
+        transform: translateY(-3px);
+    }
+  
+     #contact {
+        background-color: #f8f9fa;
+        padding: 60px 0;
+    }
+
+    .contact-container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .contact-info {
+        margin-bottom: 30px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .contact-item i {
+        font-size: 1.2em;
+        color: #3498db;
+        margin-right: 10px;
+    }
+
+    .contact-item p {
+        font-size: 1.1em;
+        color: #2c3e50;
+    }
+
+    .contact-actions {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .btn {
+        display: inline-block;
+        background-color: #3498db;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #2980b9;
+    }
+
+    @media (max-width: 768px) {
+        .contact-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn {
+            width: 80%;
+            margin-bottom: 10px;
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .timeline::after {
+            left: 31px;
+        }
+        
+        .timeline-item {
+            width: 100%;
+            padding-left: 70px;
+            padding-right: 25px;
+        }
+        
+        .timeline-item::after {
+            left: 15px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 0%;
+        }
+        
+        .skill-category {
+            flex-basis: 100%;
+        }
+        
+        .contact-container {
+            flex-direction: column;
+        }
+        
+        .contact-info, #contact-form {
+            flex-basis: 100%;
+        }
+    }
+</style>
+
+<style>
+    /* Certifications Styles */
+    .certifications-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .certification-item {
+        flex-basis: calc(33.333% - 20px);
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+    }
+
+    .certification-item:hover {
         transform: translateY(-5px);
         box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
-    .certification-card i {
+
+    .certification-item i {
         font-size: 2.5em;
         color: #3498db;
         margin-bottom: 15px;
     }
-    .certification-card h3 {
-        margin-top: 0;
-        color: #2c3e50;
-        font-size: 1.2em;
+
+    /* Projects Styles */
+    .projects-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
     }
-    .certification-card p {
-        color: #7f8c8d;
-        font-size: 0.9em;
-    }
-    #conclusion {
-        background-color: #2c3e50;
-        color: #ecf0f1;
-        text-align: center;
-    }
-    .cta-button {
-        display: inline-block;
-        background-color: #3498db;
-        color: #ffffff;
-        padding: 12px 24px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 20px;
+
+    .project-item {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
     }
-    .cta-button:hover {
-        background-color: #2980b9;
-        transform: translateY(-3px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+    .project-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
-    .button-container {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 30px;
+
+    .project-item h3 {
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .certification-item {
+            flex-basis: 100%;
+        }
+
+        .projects-container, .portfolio-container {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 
-<section id="certifications">
-    <div class="certifications-container">
-        <h2>Certifications</h2>
-        <div class="certifications-grid">
-            <div class="certification-card">
-                <i class="fas fa-certificate"></i>
-                <h3>Transactional Analysis 101</h3>
-                <p>International Transactional Analysis Association (ITAA)</p>
-            </div>
-            <div class="certification-card">
-                <i class="fas fa-language"></i>
-                <h3>Cambridge English: Business Higher, C1 Level</h3>
-                <p>University of Cambridge</p>
-            </div>
-            <div class="certification-card">
-                <i class="fas fa-chart-bar"></i>
-                <h3>HR Analytics</h3>
-                <p>Indian Institute of Management Rohtak</p>
-            </div>
-        </div>
-    </div>
-</section>
+<style>
+    #tedx-talk {
+        background-color: #f8f8f8;
+        padding: 60px 0;
+        margin-top: 40px;
+    }
 
-<section id="conclusion">
-    <div class="conclusion-container">
-        <h2>Ready to Make an Impact</h2>
-        <p>As an innovative HR professional with a passion for data-driven decision making and process automation, I am committed to driving organizational success through strategic human resource management. My diverse skill set, coupled with a proven track record of implementing impactful HR initiatives, positions me as a valuable asset to forward-thinking companies.</p>
-        <p>I am excited about the opportunity to bring my expertise in HR analytics, employee experience design, and performance management to a dynamic organization that values innovation and employee growth.</p>
-        <div class="button-container">
-            <a href="mailto:ezhilarasan1618@gmail.com" class="cta-button">Get in Touch</a>
-            <a href="https://github.com/Ezhil1618/my-resume/raw/main/Ezhil_Arasan_M_Resume.pdf" class="cta-button" download>Download Resume</a>
-        </div>
-    </div>
-</section>
-<script>
-    // Animate certification cards on scroll
-    const certificationCards = document.querySelectorAll('.certification-card');
-    const animateCertifications = () => {
-        certificationCards.forEach(card => {
-            const cardTop = card.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (cardTop < windowHeight * 0.8) {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }
-        });
-    };
+    .tedx-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
 
-    // Set initial state for certification cards
-    certificationCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(50px)';
-        card.style.transition = `all 0.5s ease ${index * 0.1}s`;
-    });
+    .video-container {
+        flex-basis: 55%;
+        margin-bottom: 30px;
+    }
 
-    // Add event listeners
-    window.addEventListener('scroll', animateCertifications);
-    window.addEventListener('load', animateCertifications);
-</script>
-<script>
-document.querySelector('.scroll-me').addEventListener('click', function() {
-  window.scrollTo({
-    top: window.innerHeight,
-    behavior: 'smooth'
-  });
-});
-</script>
+    .video-container iframe {
+        width: 100%;
+        height: 315px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        border-radius: 8px;
+    }
+
+    .tedx-description {
+        flex-basis: 40%;
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .tedx-description h3 {
+        color: #e62b1e;
+        margin-bottom: 15px;
+    }
+
+    .tedx-description p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+
+    .key-points, .impact-statement {
+        margin-bottom: 20px;
+    }
+
+    .key-points h4, .impact-statement h4 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    .key-points ul {
+        padding-left: 20px;
+    }
+
+    .key-points li {
+        margin-bottom: 5px;
+    }
+
+    .quote-container {
+        background-color: #f0f3f5;
+        padding: 20px;
+        border-left: 4px solid #e62b1e;
+        margin-top: 20px;
+    }
+
+    blockquote {
+        font-style: italic;
+        color: #2c3e50;
+    }
+
+    .tedx-facts {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .fact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fact i {
+        font-size: 2em;
+        color: #e62b1e;
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .tedx-container {
+            flex-direction: column;
+        }
+
+        .video-container, .tedx-description {
+            flex-basis: 100%;
+        }
+
+        .tedx-facts {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+
+    /* Animation for the section */
+    #tedx-talk {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    #tedx-talk.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<style>
+    #future-vision {
+        background-color: #f0f7ff;
+        padding: 60px 0;
+    }
+
+    .vision-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .vision-intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 40px;
+    }
+
+    .vision-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .vision-item {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .vision-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .vision-item i {
+        font-size: 2.5em;
+        color: #3498db;
+        margin-bottom: 15px;
+    }
+
+    .vision-item h3 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    .vision-statement {
+        background-color: #2c3e50;
+        color: white;
+        padding: 30px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .vision-statement h3 {
+        color: #3498db;
+        margin-bottom: 15px;
+    }
+
+    @media (max-width: 768px) {
+        .vision-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Animation for the section */
+    .vision-item, .vision-statement {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .vision-item.visible, .vision-statement.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
