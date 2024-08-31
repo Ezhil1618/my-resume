@@ -18,6 +18,7 @@
             background-color: #f0f3f5;
             overflow-x: hidden;
         }
+      
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -131,6 +132,23 @@
     </style>
 </head>
 <body>
+  <section class="scroll-me">
+  <div class="container">
+    <div class="scroll-me-content">
+      <h2>Welcome to My Digital Resume</h2>
+      <p>Scroll down to explore my professional journey</p>
+    </div>
+    <div class="scroll-me-mouse">
+      <div class="scroll-me-mouse-icon">
+        <span></span>
+      </div>
+      <div class="scroll-me-mouse-message">
+        <span class="scroll-me-message-1">scroll me</span>
+        <span class="scroll-me-message-2">↓</span>
+      </div>
+    </div>
+  </div>
+</section>
     <header>
         <div class="header-bg"></div>
         <div class="header-content">
@@ -191,6 +209,83 @@
             position: absolute;
             left: -20px;
         }
+  .scroll-me {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+}
+
+.scroll-me-content {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.scroll-me-content h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.scroll-me-mouse {
+  width: 50px;
+  height: 90px;
+  border: 3px solid #ecf0f1;
+  border-radius: 60px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.scroll-me-mouse-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ecf0f1;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollAnimation 2s infinite;
+}
+
+@keyframes scrollAnimation {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+}
+
+.scroll-me-mouse-message {
+  text-align: center;
+  margin-top: 110px;
+}
+
+.scroll-me-mouse-message span {
+  display: block;
+  font-size: 14px;
+  color: #ecf0f1;
+}
+
+.scroll-me-message-2 {
+  animation: arrowBlink 1s infinite;
+}
+
+@keyframes arrowBlink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
     </style>
 
     <section id="experience">
@@ -814,4 +909,12 @@ window.addEventListener('load', animateAccomplishments);
     // Add event listeners
     window.addEventListener('scroll', animateCertifications);
     window.addEventListener('load', animateCertifications);
+</script>
+<script>
+document.querySelector('.scroll-me').addEventListener('click', function() {
+  window.scrollTo({
+    top: window.innerHeight,
+    behavior: 'smooth'
+  });
+});
 </script>
