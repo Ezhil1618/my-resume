@@ -460,25 +460,34 @@
         font-size: 0.9em;
     }
     
-    @media screen and (max-width: 600px) {
-        .timeline::after {
-            left: 31px;
-        }
-        .timeline-item {
-            width: 100%;
-            padding-left: 70px;
-            padding-right: 25px;
-        }
-        .timeline-item::after {
-            left: 15px;
-        }
-        .timeline-item:nth-child(even) {
-            left: 0%;
-        }
-        .timeline-item:nth-child(odd)::after {
-            left: 15px;
-        }
+    @media screen and (max-width: 767px) {
+    .timeline::after {
+        left: 31px;
     }
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    .timeline-item::after {
+        left: 15px;
+    }
+    .timeline-item:nth-child(even) {
+        left: 0%;
+    }
+    .timeline-item:nth-child(odd) {
+        left: 0%;
+    }
+    .timeline-item:nth-child(odd)::after {
+        left: 15px;
+    }
+    .timeline-item:nth-child(even)::after {
+        left: 15px;
+    }
+    .timeline-content {
+        width: 100%;
+    }
+  }
 </style>
 
 <section id="education">
