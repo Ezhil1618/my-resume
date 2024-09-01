@@ -785,6 +785,51 @@
         text-align: center;
         padding: 20px 0;
     }
+      
+    #accomplishments {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.accomplishments-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.accomplishment-item {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.accomplishment-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.accomplishment-item i {
+    font-size: 2.5em;
+    color: #3498db;
+    margin-bottom: 15px;
+}
+
+.accomplishment-item h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .accomplishments-container {
+        grid-template-columns: 1fr;
+    }
+}  
     </style>
 </head>
 <body>
@@ -841,19 +886,23 @@
                 <p class="company">Intellect Design Arena Ltd, Chennai, IN | July 2022 - Present</p>
                 <ul>
                     <li>Supported HR Shared Services for 6000+ global employees across multiple countries.</li>
-                    <li>Led and contributed to various HR projects focused on process improvement and resource management.</li>
-                    <li>Contributed to digital transformation projects, reducing administrative time by 20%.</li>
-                    <li>Automated HR processes to support data-driven decision-making.</li>
+                    <li>Led HR process improvement and automation projects, reducing administrative time by 20%.</li>
+                    <li>Maintain and update employee records in the HRIS, ensuring data accuracy and compliance with company policies.</li>
+                    <li>Served as the first point of contact for employee inquiries related to HR policies, benefits, and other HR-related matters.</li>
+                    <li>Oversee comprehensive insurance processes, including Group Mediclaim (GMC) and Group Personal Accident (GPA) claims.</li>
+                    <li>Generate and distribute regular HR reports on employee metrics, turnover rates, and other key HR indicators to support strategic decision-making</li>
                 </ul>
             </div>
             <div class="experience-item">
-                <h3>Deputy Manager HRBP</h3>
+                <h3>HR Business Partner</h3>
                 <p class="company">Reliance Jio Infocomm Limited, Madurai, IN | February 2019 - July 2022</p>
                 <ul>
-                    <li>Managed HR services for 800+ employees, focusing on talent management and succession planning.</li>
-                    <li>Developed data-driven retention strategy, reducing turnover by 30% in key departments.</li>
-                    <li>Implemented performance feedback system, improving quality metrics by 25%.</li>
-                    <li>Aligned HR initiatives with business goals, enhancing productivity by 18% for a 500+ workforce.</li>
+                    <li>HR Business Partner for 800+ employees, aligning HR initiatives with business objectives.</li>
+                    <li>Developed talent management strategies, improving employee retention and engagement.</li>
+                    <li>Implemented data-driven retention strategy, reducing turnover by 30% in key departments.</li>
+                    <li>Streamlined recruitment processes, reducing time-to-hire by 20% for critical roles.</li>
+                    <li>Managed employee relations, effectively resolving conflicts and improving team dynamics.</li>
+                    <li>Facilitated leadership development programs, enhancing managerial effectiveness across departments.</li>
                 </ul>
             </div>
         </section>
@@ -964,18 +1013,45 @@
             <div class="projects-container">
                 <div class="project-item">
                     <h3>HR Process Automation Initiative</h3>
-                    <p>Led a team in developing and implementing automated systems for HR processes, resulting in a 40% reduction in processing time and a 30% increase in data accuracy.</p>
+                    <p>Led automation of key HR processes, cutting processing time by 40%, increasing data accuracy by 30%, and halving query resolution time through self-service portals.</p>
                 </div>
                 <div class="project-item">
-                    <h3>Employee Wellness Program</h3>
-                    <p>Spearheaded the implementation of a global employee wellness program, reducing absenteeism by 15% and improving overall employee satisfaction.</p>
+                    <h3>Company Profile System</h3>
+                    <p>Spearheaded the development of a comprehensive employee profiling system for 6000+ global employees, enhancing visibility of skills and experiences to improve resource allocation and project staffing processes.</p>
                 </div>
                 <div class="project-item">
                     <h3>Talent Retention Strategy</h3>
-                    <p>Developed and implemented a data-driven retention strategy, reducing turnover by 30% in key departments and improving employee engagement scores.</p>
+                    <p>Implemented data-driven strategies to tackle early attrition, resulting in a 25% reduction within six months through enhanced onboarding processes, mentorship programs, and feedback systems.</p>
                 </div>
             </div>
         </section>
+      
+     <!-- Accomplisments Section --> 
+    <section id="accomplishments">
+    <h2>Accomplishments</h2>
+    <div class="accomplishments-container">
+        <div class="accomplishment-item">
+            <i class="fas fa-award"></i>
+            <h3>Spotlight Award for Innovation</h3>
+            <p>Received from Intellect Design Arena for outstanding performance in Q4 2023</p>
+        </div>
+        <div class="accomplishment-item">
+            <i class="fas fa-chart-line"></i>
+            <h3>Attrition Reduction</h3>
+            <p>Reduced early attrition rates by 15% through targeted HR strategies and data-driven initiatives</p>
+        </div>
+        <div class="accomplishment-item">
+            <i class="fas fa-star"></i>
+            <h3>Star Performer</h3>
+            <p>Recognized as 'Star Performer' for Q3 and Q4 (2020), maintaining 100% SLA in HR operations</p>
+        </div>
+        <div class="accomplishment-item">
+            <i class="fas fa-cogs"></i>
+            <h3>HR Process Automation</h3>
+            <p>Led initiative resulting in 40% reduction in processing time and 30% increase in data accuracy</p>
+        </div>
+    </div>
+</section>
 
         <!-- TEDx Talk Section -->
         <section id="tedx-talk">
@@ -1245,6 +1321,29 @@
         sections.forEach(section => {
             observer.observe(section);
         });
+      // Animate accomplishment items
+const accomplishmentItems = document.querySelectorAll('.accomplishment-item');
+const animateAccomplishments = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+        }
+    });
+};
+
+const accomplishmentObserver = new IntersectionObserver(animateAccomplishments, {
+    threshold: 0.5,
+});
+
+accomplishmentItems.forEach(item => {
+    item.style.opacity = 0;
+    item.style.transform = 'translateY(20px)';
+    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    accomplishmentObserver.observe(item);
+});
+      
     </script>
 </body>
 </html>
