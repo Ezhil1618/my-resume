@@ -6,6 +6,7 @@
     <title>Ezhil Arasan M - Interactive Digital Resume</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
     <style>
         /* Global Styles */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -29,6 +30,22 @@
             color: var(--text-color);
             background-color: var(--bg-color);
             overflow-x: hidden;
+        }
+
+        /* Particle Background Styles */
+        #tsparticles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Ensure particles are behind all content */
+            pointer-events: none; /* Allow interactions through the particle layer */
+        }
+
+        /* Optional: Adjust body padding if needed */
+        body.fixed-nav {
+            padding-top: 60px; /* Replace 60px with your nav's height */
         }
 
         /* Header Styles */
@@ -830,87 +847,11 @@
         grid-template-columns: 1fr;
     }
 }  
-
-/* Particle background */
-#particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-color: var(--bg-color);
-}
-
-/* Skills filter */
-.skills-filter {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    padding: 0.5rem 1rem;
-    border: 2px solid var(--primary-color);
-    background: transparent;
-    color: var(--primary-color);
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    background: var(--primary-color);
-    color: white;
-}
-
-/* Animation for skill items */
-.skill-item {
-    transform: scale(1);
-    transition: all 0.4s ease;
-}
-
-.skill-item.hidden {
-    transform: scale(0);
-    width: 0;
-    padding: 0;
-    margin: 0;
-    opacity: 0;
-}
-
-/* Update existing skill item styles */
-.skill-item {
-    position: relative;
-    overflow: hidden;
-}
-
-.skill-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: 0.5s;
-}
-
-.skill-item:hover::before {
-    left: 100%;
-}
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
+    <div id="tsparticles"></div>
+    
     <div class="scroll-me">
         <div class="scroll-content">
             <h1 class="glitch" data-text="Hello">Hello</h1>
@@ -1013,33 +954,27 @@
         <!-- Skills Section -->
         <section id="skills">
             <h2>Skills</h2>
-            <div class="skills-filter">
-                <button class="filter-btn active" data-filter="all">All Skills</button>
-                <button class="filter-btn" data-filter="technical">Technical</button>
-                <button class="filter-btn" data-filter="soft">Soft Skills</button>
-                <button class="filter-btn" data-filter="management">Management</button>
-            </div>
             <div class="skills-container">
                 <div class="skill-category">
-                    <div class="skill-item" data-category="technical">HR Analytics</div>
-                    <div class="skill-item" data-category="management">Talent Acquisition</div>
-                    <div class="skill-item" data-category="soft">Employee Relations</div>
-                    <div class="skill-item" data-category="management">Performance Management</div>
-                    <div class="skill-item" data-category="soft">Employee Engagement</div>
+                    <div class="skill-item">HR Analytics</div>
+                    <div class="skill-item">Talent Acquisition</div>
+                    <div class="skill-item">Employee Relations</div>
+                    <div class="skill-item">Performance Management</div>
+                    <div class="skill-item">Employee Engagement</div>
                 </div>
                 <div class="skill-category">
-                    <div class="skill-item" data-category="technical">HRIS Management</div>
-                    <div class="skill-item" data-category="management">Data Analysis</div>
-                    <div class="skill-item" data-category="management">Process Automation</div>
-                    <div class="skill-item" data-category="management">Workforce Planning</div>
-                    <div class="skill-item" data-category="management">Talent Management</div>
+                    <div class="skill-item">HRIS Management</div>
+                    <div class="skill-item">Data Analysis</div>
+                    <div class="skill-item">Process Automation</div>
+                    <div class="skill-item">Workforce Planning</div>
+                    <div class="skill-item">Talent Management</div>
                 </div>
                 <div class="skill-category">
-                    <div class="skill-item" data-category="management">Strategic Planning</div>
-                    <div class="skill-item" data-category="management">Change Management</div>
-                    <div class="skill-item" data-category="management">Conflict Resolution</div>
-                    <div class="skill-item" data-category="management">Leadership Development</div>
-                    <div class="skill-item" data-category="management">Benefits Administration</div>
+                    <div class="skill-item">Strategic Planning</div>
+                    <div class="skill-item">Change Management</div>
+                    <div class="skill-item">Conflict Resolution</div>
+                    <div class="skill-item">Leadership Development</div>
+                    <div class="skill-item">Benefits Administration</div>
                 </div>
             </div>
         </section>
@@ -1205,111 +1140,7 @@
         <p>&copy; 2024 Ezhil Arasan M. All rights reserved.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Initialize particles
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: '#3498db'
-                },
-                shape: {
-                    type: 'circle'
-                },
-                opacity: {
-                    value: 0.5,
-                    random: false
-                },
-                size: {
-                    value: 3,
-                    random: true
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#3498db',
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    grab: {
-                        distance: 140,
-                        line_linked: {
-                            opacity: 1
-                        }
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
-                }
-            },
-            retina_detect: true
-        });
-
-        // Skills filter functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const skillItems = document.querySelectorAll('.skill-item');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const filterValue = button.getAttribute('data-filter');
-                
-                skillItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
-        // Add hover effect for skill items
-        skillItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                item.style.transform = 'translateY(-5px) scale(1.05)';
-            });
-            
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
