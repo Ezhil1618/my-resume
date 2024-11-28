@@ -3,20 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Resume</title>
+    <title>Crazy Enhanced Resume</title>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vivus@0.4.6/dist/vivus.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
+            cursor: url('custom-cursor.png'), auto;
         }
 
         body {
             background: #f0f2f5;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .parallax {
+            background-image: url('your-background-image.jpg');
+            min-height: 400px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .container {
@@ -29,6 +43,7 @@
             background: rgba(255, 255, 255, 0.9);
             padding: 2rem;
             border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
 
         @keyframes fadeIn {
@@ -130,7 +145,6 @@
             z-index: -1;
         }
 
-        /* Add ripple effect styles */
         .ripple {
             position: fixed;
             border-radius: 50%;
@@ -150,6 +164,7 @@
 </head>
 <body>
     <div id="particles-js"></div>
+    <div class="parallax"></div>
     <div class="container">
         <header class="header">
             <img src="your-profile-image.jpg" alt="Profile Picture" class="profile-img">
@@ -179,7 +194,6 @@
                     <li>Key achievement or responsibility</li>
                 </ul>
             </div>
-            <!-- Add more experience items as needed -->
         </section>
 
         <section class="section" id="education">
@@ -193,12 +207,7 @@
 
         <section class="section" id="skills">
             <h2>Skills</h2>
-            <div class="skills">
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">JavaScript</span>
-                <!-- Add more skills as needed -->
-            </div>
+            <canvas id="skillsChart" width="400" height="400"></canvas>
         </section>
     </div>
 
@@ -331,6 +340,34 @@
                 particle.color.value = `hsl(${(hue + particle.position.x) % 360}, 70%, 60%)`;
             });
         }, 50);
+
+        // Initialize Chart.js for skills
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        const skillsChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
+                datasets: [{
+                    label: 'Skill Level',
+                    data: [90, 85, 80, 70, 75],
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: 'rgba(52, 152, 219, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scale: {
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Initialize Vivus for SVG animations
+        new Vivus('my-svg', { duration: 200 }, function () {
+            console.log('SVG animation completed');
+        });
     </script>
 </body>
 </html>
