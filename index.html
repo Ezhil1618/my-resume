@@ -1,444 +1,289 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crazy Enhanced Resume</title>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vivus@0.4.6/dist/vivus.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-            cursor: url('custom-cursor.png'), auto;
-        }
+<style>
+  /* Responsive Design and Advanced Animations */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0a192f;
+    color: #333;
+    overflow-x: hidden;
+  }
 
-        :root {
-            --background-color: #f0f2f5;
-            --text-color: #333;
-        }
+  /* Ethereal Background Animation */
+  .background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(45deg, #0a192f, #112240);
+  }
 
-        body {
-            background: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-            transition: background 0.5s, color 0.5s;
-        }
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
 
-        .parallax {
-            background-image: url('your-background-image.jpg');
-            min-height: 400px;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
+  /* New styles for different shapes */
+  .particle.square {
+    border-radius: 0;
+  }
 
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s ease forwards;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        }
+  .particle.triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid rgba(100, 255, 218, 0.15);
+  }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+  .resume-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    animation: fadeIn 1.5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
 
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
+  .resume-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(100, 255, 218, 0.1));
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+  }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            border: 3px solid #3498db;
-            animation: borderPulse 2s infinite;
-        }
+  .resume-container:hover::before {
+    transform: translateX(100%);
+  }
 
-        @keyframes borderPulse {
-            50% {
-                border-color: #2ecc71;
-            }
-        }
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: slideInDown 1s ease-out;
+  }
 
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            transform: translateX(-20px);
-            opacity: 0;
-        }
+  header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #2c3e50;
+    position: relative;
+    display: inline-block;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-        .experience-item, .education-item {
-            margin-bottom: 1.5rem;
-            padding-left: 20px;
-            border-left: 3px solid #3498db;
-            transition: all 0.3s ease;
-        }
+  header h1::after {
+    content: '';
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(90deg, #64ffda, #00bcd4);
+    display: block;
+    margin: 10px auto 0;
+    animation: expandWidth 1s forwards;
+  }
 
-        .experience-item:hover, .education-item:hover {
-            border-left-color: #2ecc71;
-            transform: translateX(10px);
-        }
+  section {
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+  section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
 
-        .skill-tag {
-            background: #3498db;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
+  h2 {
+    font-size: 1.8em;
+    color: #34495e;
+    border-bottom: 2px solid #64ffda;
+    display: inline-block;
+    margin-bottom: 15px;
+    position: relative;
+  }
 
-        .skill-tag:hover {
-            background: #2ecc71;
-            transform: scale(1.1);
-        }
+  h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #64ffda, #00bcd4);
+    transition: width 0.3s ease;
+  }
 
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
+  section:hover h2::after {
+    width: 100%;
+  }
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
-        }
+  /* Enhanced Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
 
-        .contact-info a {
-            color: #3498db;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+  @keyframes slideInDown {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
 
-        .contact-info a:hover {
-            color: #2ecc71;
-        }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+  /* Interactive Elements */
+  .skill-tag {
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 5px;
+    background: linear-gradient(45deg, #64ffda, #00bcd4);
+    border-radius: 20px;
+    color: #0a192f;
+    font-weight: 500;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-        .ripple {
-            position: fixed;
-            border-radius: 50%;
-            background: rgba(52, 152, 219, 0.4);
-            transform: scale(0);
-            animation: rippleEffect 1s linear;
-            pointer-events: none;
-        }
+  .skill-tag:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+  }
 
-        @keyframes rippleEffect {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .resume-container {
+      margin: 20px;
+      padding: 15px;
+    }
 
-        #three-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+    section {
+      padding: 15px;
+    }
 
-        .theme-toggle {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: #3498db;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <div id="particles-js"></div>
-    <div class="parallax"></div>
-    <div class="container">
-        <header class="header">
-            <img src="your-profile-image.jpg" alt="Profile Picture" class="profile-img">
-            <h1>Your Name</h1>
-            <p>Professional Title</p>
-            <div class="contact-info">
-                <a href="mailto:your.email@example.com">Email</a>
-                <a href="tel:+1234567890">Phone</a>
-                <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>
-                <a href="https://github.com/yourusername">GitHub</a>
-            </div>
-        </header>
+    .skill-tag {
+      padding: 4px 12px;
+      font-size: 0.9em;
+    }
+  }
+</style>
 
-        <section class="section" id="about">
-            <h2>About Me</h2>
-            <p>A brief professional summary about yourself and your career objectives.</p>
-        </section>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const background = document.createElement('div');
+    background.className = 'background-animation';
+    document.body.appendChild(background);
 
-        <section class="section" id="experience">
-            <h2>Experience</h2>
-            <div class="experience-item">
-                <h3>Job Title</h3>
-                <p>Company Name | Date - Present</p>
-                <ul>
-                    <li>Key achievement or responsibility</li>
-                    <li>Key achievement or responsibility</li>
-                    <li>Key achievement or responsibility</li>
-                </ul>
-            </div>
-        </section>
+    // Create initial particles
+    for (let i = 0; i < 50; i++) {
+      createParticle();
+    }
 
-        <section class="section" id="education">
-            <h2>Education</h2>
-            <div class="education-item">
-                <h3>Degree Name</h3>
-                <p>University Name | Graduation Year</p>
-                <p>Relevant coursework or achievements</p>
-            </div>
-        </section>
+    // Handle mouse/touch interaction
+    const interactionHandler = (e) => {
+      const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+      const y = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+      
+      for (let i = 0; i < 3; i++) {
+        createParticle(x, y);
+      }
+    };
 
-        <section class="section" id="skills">
-            <h2>Skills</h2>
-            <canvas id="skillsChart" width="400" height="400"></canvas>
-        </section>
+    document.addEventListener('click', interactionHandler);
+    document.addEventListener('touchstart', interactionHandler);
+  });
+
+  function createParticle(x, y) {
+    const particle = document.createElement('div');
+    const shapeType = ['circle', 'square', 'triangle'][Math.floor(Math.random() * 3)];
+    particle.className = `particle ${shapeType}`;
+    
+    const size = Math.random() * 200 + 50;
+    const posX = x || Math.random() * window.innerWidth;
+    const posY = y || Math.random() * window.innerHeight;
+    
+    if (shapeType !== 'triangle') {
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+    }
+    particle.style.left = `${posX - size/2}px`;
+    particle.style.top = `${posY - size/2}px`;
+    particle.style.background = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.15)`;
+    
+    document.querySelector('.background-animation').appendChild(particle);
+
+    // Animate and remove particle
+    setTimeout(() => {
+      particle.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
+      particle.style.opacity = '0';
+      setTimeout(() => particle.remove(), 1000);
+    }, 100);
+  }
+</script>
+
+<div class="resume-container">
+  <header>
+    <h1>John Doe</h1>
+    <p>Full Stack Developer</p>
+  </header>
+
+  <section id="summary">
+    <h2>Summary</h2>
+    <p>Passionate developer with 5+ years of experience in building web applications using modern technologies. Adept at problem-solving and committed to continuous learning.</p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <ul>
+      <li>
+        <strong>Senior Developer</strong> at TechCorp (2019 - Present)
+        <p>Led a team of developers to build scalable web applications, improving performance by 30%.</p>
+      </li>
+      <li>
+        <strong>Frontend Developer</strong> at WebSolutions (2016 - 2019)
+        <p>Developed responsive user interfaces and collaborated with designers to enhance user experience.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div style="text-align: center;">
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">React</span>
+      <span class="skill-tag">Node.js</span>
+      <span class="skill-tag">HTML5/CSS3</span>
+      <span class="skill-tag">REST APIs</span>
+      <span class="skill-tag">Git</span>
+      <span class="skill-tag">Agile</span>
     </div>
+  </section>
 
-    <canvas id="three-canvas"></canvas>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: john.doe@example.com</p>
+    <p>LinkedIn: linkedin.com/in/johndoe</p>
+    <p>GitHub: github.com/johndoe</p>
+  </section>
+</div>
 
-    <div class="theme-toggle" onclick="toggleTheme()">Switch Theme</div>
-
-    <script>
-        // Animate sections on scroll
-        const sections = document.querySelectorAll('.section');
-        
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateX(0)';
-                    entry.target.style.transition = 'all 0.5s ease';
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        // Add ripple effect handler
-        document.addEventListener('click', function(e) {
-            const ripple = document.createElement('div');
-            ripple.className = 'ripple';
-            ripple.style.left = e.clientX + 'px';
-            ripple.style.top = e.clientY + 'px';
-            document.body.appendChild(ripple);
-            
-            ripple.addEventListener('animationend', () => {
-                ripple.remove();
-            });
-        });
-
-        // Update particles configuration with gradient colors
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: ['#3498db', '#2ecc71', '#e74c3c', '#f1c40f', '#9b59b6']  // Multiple colors for gradient effect
-                },
-                shape: {
-                    type: 'circle'
-                },
-                opacity: {
-                    value: 0.5,
-                    random: true,  // Random opacity for more dynamic effect
-                    anim: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 2,
-                        size_min: 0.1,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#3498db',
-                    opacity: 0.4,
-                    width: 1,
-                    color_rgb_line: true  // Enable color mixing for lines
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: true,  // Random movement for more organic feel
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false,
-                    attract: {  // Add subtle attraction behavior
-                        enable: true,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'repulse'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    repulse: {
-                        distance: 100,
-                        duration: 0.4
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
-                }
-            },
-            retina_detect: true
-        });
-
-        // Color cycling animation for particles
-        let hue = 0;
-        setInterval(() => {
-            hue = (hue + 1) % 360;
-            const particles = pJSDom[0].pJS.particles.array;
-            particles.forEach(particle => {
-                particle.color.value = `hsl(${(hue + particle.position.x) % 360}, 70%, 60%)`;
-            });
-        }, 50);
-
-        // Initialize Chart.js for skills
-        const ctx = document.getElementById('skillsChart').getContext('2d');
-        const skillsChart = new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js'],
-                datasets: [{
-                    label: 'Skill Level',
-                    data: [90, 85, 80, 70, 75],
-                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                    borderColor: 'rgba(52, 152, 219, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scale: {
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        // Initialize Vivus for SVG animations
-        new Vivus('my-svg', { duration: 200 }, function () {
-            console.log('SVG animation completed');
-        });
-
-        // Initialize Three.js
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        
-        // Create particles
-        const particles = new THREE.BufferGeometry();
-        const particleCount = 1000;
-        const positions = new Float32Array(particleCount * 3);
-        for (let i = 0; i < particleCount; i++) {
-            positions[i * 3] = (Math.random() - 0.5) * 10;
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
-        }
-        particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        
-        const particleMaterial = new THREE.PointsMaterial({ color: 0x888888 });
-        const particleSystem = new THREE.Points(particles, particleMaterial);
-        scene.add(particleSystem);
-        
-        camera.position.z = 5;
-        
-        function animate() {
-            requestAnimationFrame(animate);
-            particleSystem.rotation.y += 0.001;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        function toggleTheme() {
-            const root = document.documentElement;
-            if (root.style.getPropertyValue('--background-color') === '#f0f2f5') {
-                root.style.setProperty('--background-color', '#333');
-                root.style.setProperty('--text-color', '#f0f2f5');
-            } else {
-                root.style.setProperty('--background-color', '#f0f2f5');
-                root.style.setProperty('--text-color', '#333');
-            }
-        }
-    </script>
-</body>
-</html>
