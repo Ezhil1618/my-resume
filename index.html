@@ -3,1367 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ezhil Arasan M - Interactive Digital Resume</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <title>Animated Resume</title>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
-        /* Global Styles */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --text-color: #333;
-            --bg-color: #f0f3f5;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            background: #f0f2f5;
+            color: #333;
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            overflow-x: hidden;
         }
 
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            color: #fff;
-            padding: 2rem 0;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(44, 62, 80, 0.9);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style-type: none;
-            padding: 1rem 0;
-            flex-wrap: wrap;
-        }
-
-        nav ul li {
-            margin: 0.5rem 1rem;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--primary-color);
-        }
-
-        .header-content {
+        .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            animation: slideInDown 1s ease;
-        }
-
-        .tagline {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            animation: slideInUp 1s ease;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .contact-info a {
-            color: #fff;
-            font-size: 1.2rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .contact-info a i {
-            margin-right: 0.5rem;
-        }
-
-        .contact-info a:hover {
-            color: var(--primary-color);
-            transform: scale(1.1);
-        }
-      
-       @media (max-width: 768px) {
-            .header-content h1 {
-                font-size: 2rem;
-            }
-
-            .tagline {
-                font-size: 1rem;
-            }
-
-            .contact-info {
-                gap: 1rem;
-            }
-
-            .contact-info a {
-                font-size: 1rem;
-            }
-      }
-        /* Scroll Me Section */
-        .scroll-me {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--secondary-color);
-            color: #fff;
-            text-align: center;
-        }
-
-        .glitch {
-            font-size: 3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            position: relative;
-            text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                0.025em 0.04em 0 #fffc00;
-            animation: glitch 725ms infinite;
-        }
-
-        .glitch span {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .glitch span:first-child {
-            animation: glitch 500ms infinite;
-            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-            transform: translate(-0.04em, -0.03em);
-            opacity: 0.75;
-        }
-
-        .glitch span:last-child {
-            animation: glitch 375ms infinite;
-            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-            transform: translate(0.04em, 0.03em);
-            opacity: 0.75;
-        }
-
-        @keyframes glitch {
-            0% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                    0.025em 0.04em 0 #fffc00;
-            }
-            15% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
-                    0.025em 0.04em 0 #fffc00;
-            }
-            16% {
-                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
-                    -0.05em -0.05em 0 #fffc00;
-            }
-            49% {
-                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
-                    -0.05em -0.05em 0 #fffc00;
-            }
-            50% {
-                text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
-                    0 -0.04em 0 #fffc00;
-            }
-            99% {
-                text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
-                    0 -0.04em 0 #fffc00;
-            }
-            100% {
-                text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
-                    -0.04em -0.025em 0 #fffc00;
-            }
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            opacity: 0.75;
-            animation: fadeIn 1s ease-out 1s forwards;
-        }
-
-        .mouse {
-            width: 40px;
-            height: 70px;
-            border: 3px solid #fff;
-            border-radius: 60px;
-            position: relative;
             margin: 2rem auto;
-        }
-
-        .mouse-wheel {
-            width: 8px;
-            height: 8px;
-            background-color: #fff;
-            border-radius: 50%;
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: scroll 1.5s infinite;
-        }
-
-        @keyframes scroll {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, 0);
-            }
-            50% {
-                opacity: 1;
-                transform: translate(-50%, 20px);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(-50%, 40px);
-            }
-        }
-
-        .scroll-text {
-            font-size: 1rem;
+            padding: 0 2rem;
             opacity: 0;
-            animation: fadeIn 1s ease-out 2s forwards;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease forwards;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
         }
 
         @keyframes fadeIn {
             to {
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* Main Content Styles */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        section {
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.5s ease;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--secondary-color);
-            position: relative;
+        .header {
             text-align: center;
+            margin-bottom: 3rem;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary-color);
-            transform: translateX(-50%);
-            transition: width 0.3s ease;
-        }
-
-        section:hover h2::after {
-            width: 100px;
-        }
-
-        /* About Section */
-        #about {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .about-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .about-image img {
-            max-width: 100%;
+        .profile-img {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-content {
-            flex: 2;
-            text-align: center;
-        }
-
-        /* Experience Section */
-        .experience-item {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .experience-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .experience-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-item .company {
-            font-style: italic;
-            color: #666;
             margin-bottom: 1rem;
+            border: 3px solid #3498db;
+            animation: borderPulse 2s infinite;
         }
 
-        .experience-item ul {
-            padding-left: 1.5rem;
+        @keyframes borderPulse {
+            50% {
+                border-color: #2ecc71;
+            }
         }
 
-        /* Education Section */
-        .timeline {
-        position: relative;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    
-    .timeline::after {
-        content: '';
-        position: absolute;
-        width: 6px;
-        background-color: #3498db;
-        top: 0;
-        bottom: 0;
-        left: 20px;
-        margin-left: -3px;
-    }
-    
-    .timeline-item {
-        padding: 10px 40px;
-        position: relative;
-        background-color: inherit;
-        width: 100%;
-    }
-    
-    .timeline-item::after {
-        content: '';
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        left: 8px;
-        background-color: #3498db;
-        border: 4px solid #fff;
-        top: 15px;
-        border-radius: 50%;
-        z-index: 1;
-    }
-    
-    .timeline-content {
-        padding: 20px 30px;
-        background-color: white;
-        position: relative;
-        border-radius: 6px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-        .timeline-item:hover {
-            transform: translateY(-5px);
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transform: translateX(-20px);
+            opacity: 0;
         }
 
-        .timeline-item:hover .timeline-content {
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        /* Skills Section */
-        .skills-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .skill-category {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-        }
-
-        .skill-item {
-            background-color: #3498db;
-            color: white;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
+        .experience-item, .education-item {
+            margin-bottom: 1.5rem;
+            padding-left: 20px;
+            border-left: 3px solid #3498db;
             transition: all 0.3s ease;
         }
 
-        .skill-item:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
+        .experience-item:hover, .education-item:hover {
+            border-left-color: #2ecc71;
+            transform: translateX(10px);
         }
 
-        /* Contact Section */
-        #contact {
-            background-color: #f8f9fa;
-            padding: 60px 0;
-            text-align: center;
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
+        .skill-tag {
+            background: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #2ecc71;
+            transform: scale(1.1);
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
         }
 
         .contact-info {
-            margin-bottom: 30px;
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            flex: 1;
+            gap: 2rem;
+            margin-top: 1rem;
         }
 
-        .contact-item i {
-            font-size: 1.2em;
+        .contact-info a {
             color: #3498db;
-            margin-right: 10px;
-        }
-
-        .contact-item p {
-            font-size: 1.1em;
-            color: #2c3e50;
-        }
-
-        .contact-actions {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 5px;
             text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            flex: 1;
-            text-align: center;
+            transition: color 0.3s ease;
         }
 
-        .btn:hover {
-            background-color: #2980b9;
+        .contact-info a:hover {
+            color: #2ecc71;
         }
 
-        /* Certifications Section */
-        .certifications-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .certification-item {
-            flex-basis: calc(33.333% - 20px);
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-            margin-bottom: 20px;
-        }
-
-        .certification-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .certification-item i {
-            font-size: 2.5em;
-            color: #3498db;
-            margin-bottom: 15px;
-        }
-
-        /* Projects Section */
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .project-item {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .project-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        /* TEDx Talk Section */
-        #tedx-talk {
-            background-color: #f8f8f8;
-            padding: 60px 0;
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .tedx-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: flex-start;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .video-container {
-            flex-basis: 100%;
-            margin-bottom: 30px;
-        }
-
-        .video-container iframe {
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 315px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            border-radius: 8px;
+            height: 100%;
+            z-index: -1;
         }
 
-        .tedx-description {
-            flex-basis: 100%;
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-top: 20px;
+        /* Add ripple effect styles */
+        .ripple {
+            position: fixed;
+            border-radius: 50%;
+            background: rgba(52, 152, 219, 0.4);
+            transform: scale(0);
+            animation: rippleEffect 1s linear;
+            pointer-events: none;
         }
 
-        .tedx-facts {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 40px;
-            text-align: center;
-            flex-wrap: wrap;
-        }
-
-        .fact {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .fact i {
-            font-size: 2em;
-            color: #e62b1e;
-            margin-bottom: 10px;
-        }
-
-        /* Future Vision Section */
-        #future-vision {
-            background-color: #f0f7ff;
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .vision-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .vision-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
-
-        .vision-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .vision-item {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .vision-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .vision-item i {
-            font-size: 2.5em;
-            color: #3498db;
-            margin-bottom: 15px;
-        }
-
-        .vision-item h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .vision-statement {
-            background-color: #2c3e50;
-            color: white;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .vision-statement h3 {
-            color: #3498db;
-            margin-bottom: 15px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content h1 {
-                font-size: 2rem;
-            }
-
-            .glitch {
-                font-size: 2rem;
-            }
-
-            .tagline {
-                font-size: 1rem;
-            }
-
-            .scroll-me {
-                padding: 0 1rem;
-            }
-
-            #about {
-                flex-direction: column;
-            }
-
-            .about-image, .about-content {
-                flex: 1;
-            }
-
-            .timeline::after {
-                left: 31px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-
-            .timeline-item::after {
-                left: 15px;
-            }
-
-            .timeline-item:nth-child(even) {
-                left: 0%;
-            }
-
-            .skills-container {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .contact-item {
-                flex-basis: 100%;
-            }
-
-            .vision-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tedx-container {
-                flex-direction: column;
-            }
-
-            .tedx-facts {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
-
-        /* Animations */
-        @keyframes slideInDown {
-            from {
-                transform: translateY(-100px);
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
                 opacity: 0;
             }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
-
-        @keyframes slideInUp {
-            from {
-                transform: translateY(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-      
-       /* Footer styles */
-    footer {
-        background-color: #2c3e50;
-        color: #fff;
-        text-align: center;
-        padding: 20px 0;
-    }
-      
-    #accomplishments {
-    padding: 60px 0;
-    background-color: #f8f9fa;
-}
-
-.accomplishments-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.accomplishment-item {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.accomplishment-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-.accomplishment-item i {
-    font-size: 2.5em;
-    color: #3498db;
-    margin-bottom: 15px;
-}
-
-.accomplishment-item h3 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-@media (max-width: 768px) {
-    .accomplishments-container {
-        grid-template-columns: 1fr;
-    }
-}  
-
-    /* Particle container styles */
-    #particles-js {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 0;
-        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-        background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
-    }
-
-    /* Ensure content appears above particles */
-    header, main, footer, .scroll-me {
-        position: relative;
-        z-index: 1;
-    }
-
-    /* Add semi-transparent background to sections for better readability */
-    section, .header-content, nav {
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(5px);
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Gradient animation */
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-
-    /* Update header background to be semi-transparent */
-    header {
-        background: linear-gradient(135deg, 
-            rgba(44, 62, 80, 0.9), 
-            rgba(52, 152, 219, 0.9));
-    }
     </style>
 </head>
 <body>
     <div id="particles-js"></div>
-
-    <div class="scroll-me">
-        <div class="scroll-content">
-            <h1 class="glitch" data-text="Hello">Hello</h1>
-            <p class="subtitle">Welcome to My Interactive Resume</p>
-            <div class="mouse">
-                <div class="mouse-wheel"></div>
-            </div>
-            <p class="scroll-text">Scroll to Explore</p>
-        </div>
-    </div>
-
-    <header id="home">
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="header-content">
-            <h1>Ezhil Arasan M</h1>
-            <p class="tagline">Innovative HR Professional | Data-Driven Decision Maker | Process Automation Expert</p>
+    <div class="container">
+        <header class="header">
+            <img src="your-profile-image.jpg" alt="Profile Picture" class="profile-img">
+            <h1>Your Name</h1>
+            <p>Professional Title</p>
             <div class="contact-info">
-                <a href="mailto:ezhilarasan1618@gmail.com"><i class="fas fa-envelope"></i> ezhilarasan1618@gmail.com</a>
-                <a href="tel:+918098833777"><i class="fas fa-phone"></i>+91 80988 33777</a>
-                <a href="https://www.linkedin.com/in/ezhil-arasan-ez1618/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Chennai, India</a>
+                <a href="mailto:your.email@example.com">Email</a>
+                <a href="tel:+1234567890">Phone</a>
+                <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>
+                <a href="https://github.com/yourusername">GitHub</a>
             </div>
-    </header>
-''
-    <main>
-        <!-- About Section -->
-        <section id="about" class="visible">
-            <div class="about-image">
-                <img src="https://media.licdn.com/dms/image/v2/D5603AQF9mcxXnoKlCw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1695451671090?e=1738195200&v=beta&t=_0qq4wATHMTYipL2ZD00FJohmbSFvyoDj5-J9weZSjw" alt="Ezhil Arasan M">
-            </div>
-            <div class="about-content">
-                <h2>About Me</h2>
-                <p>Innovative HR professional with over 5 years of experience in HR Business Partnering and HR Shared Services. Expertise in HR analytics, process automation, and strategic HR initiatives. Proven track record in implementing data-driven HR solutions and managing impactful projects. Skilled in employee experience design and aligning HR strategies with business goals.</p>
-            </div>
+        </header>
+
+        <section class="section" id="about">
+            <h2>About Me</h2>
+            <p>A brief professional summary about yourself and your career objectives.</p>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience">
-            <h2>Professional Experience</h2>
+        <section class="section" id="experience">
+            <h2>Experience</h2>
             <div class="experience-item">
-                <h3>HR Shared Services Specialist</h3>
-                <p class="company">Intellect Design Arena Ltd, Chennai, IN | July 2022 - Present</p>
+                <h3>Job Title</h3>
+                <p>Company Name | Date - Present</p>
                 <ul>
-                    <li>Supported HR Shared Services for 6000+ global employees across multiple countries.</li>
-                    <li>Led HR process improvement and automation projects, reducing administrative time by 20%.</li>
-                    <li>Maintain and update employee records in the HRIS, ensuring data accuracy and compliance with company policies.</li>
-                    <li>Served as the first point of contact for employee inquiries related to HR policies, benefits, and other HR-related matters.</li>
-                    <li>Oversee comprehensive insurance processes, including Group Mediclaim (GMC) and Group Personal Accident (GPA) claims.</li>
-                    <li>Generate and distribute regular HR reports on employee metrics, turnover rates, and other key HR indicators to support strategic decision-making</li>
+                    <li>Key achievement or responsibility</li>
+                    <li>Key achievement or responsibility</li>
+                    <li>Key achievement or responsibility</li>
                 </ul>
             </div>
-            <div class="experience-item">
-                <h3>HR Business Partner</h3>
-                <p class="company">Reliance Jio Infocomm Limited, Madurai, IN | February 2019 - July 2022</p>
-                <ul>
-                    <li>HR Business Partner for 800+ employees, aligning HR initiatives with business objectives.</li>
-                    <li>Developed talent management strategies, improving employee retention and engagement.</li>
-                    <li>Implemented data-driven retention strategy, reducing turnover by 30% in key departments.</li>
-                    <li>Streamlined recruitment processes, reducing time-to-hire by 20% for critical roles.</li>
-                    <li>Managed employee relations, effectively resolving conflicts and improving team dynamics.</li>
-                    <li>Facilitated leadership development programs, enhancing managerial effectiveness across departments.</li>
-                </ul>
-            </div>
+            <!-- Add more experience items as needed -->
         </section>
 
-        <!-- Education Section -->
-        <section id="education">
+        <section class="section" id="education">
             <h2>Education</h2>
-            <div class="timeline">
-                <div class="timeline-item" onclick="togglePopup(this)">
-                    <div class="timeline-content">
-                        <h3>Post Graduate Certificate, Strategic Human Resource Management (SHRM)</h3>
-                        <p>Indian Institute of Management Tiruchirappalli (IIM - Trichy) | January 2024</p>
-                    </div>
-                </div>
-                <div class="timeline-item" onclick="togglePopup(this)">
-                    <div class="timeline-content">
-                        <h3>Master of Business Administration (MBA), Human Resources and Marketing</h3>
-                        <p>Jansons School of Business, Coimbatore | May 2019</p>
-                    </div>
-                </div>
-                <div class="timeline-item" onclick="togglePopup(this)">
-                    <div class="timeline-content">
-                        <h3>Bachelor of Engineering (B.E), Civil Engineering</h3>
-                        <p>Panimalar Engineering College, Anna University Chennai | December 2016</p>
-                    </div>
-                </div>
+            <div class="education-item">
+                <h3>Degree Name</h3>
+                <p>University Name | Graduation Year</p>
+                <p>Relevant coursework or achievements</p>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills">
+        <section class="section" id="skills">
             <h2>Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <div class="skill-item">HR Analytics</div>
-                    <div class="skill-item">Talent Acquisition</div>
-                    <div class="skill-item">Employee Relations</div>
-                    <div class="skill-item">Performance Management</div>
-                    <div class="skill-item">Employee Engagement</div>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-item">HRIS Management</div>
-                    <div class="skill-item">Data Analysis</div>
-                    <div class="skill-item">Process Automation</div>
-                    <div class="skill-item">Workforce Planning</div>
-                    <div class="skill-item">Talent Management</div>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-item">Strategic Planning</div>
-                    <div class="skill-item">Change Management</div>
-                    <div class="skill-item">Conflict Resolution</div>
-                    <div class="skill-item">Leadership Development</div>
-                    <div class="skill-item">Benefits Administration</div>
-                </div>
+            <div class="skills">
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <!-- Add more skills as needed -->
             </div>
         </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2>Get in Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <p>ezhilarasan1618@gmail.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <p>+91 80988 33777</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>Chennai - India</p>
-                    </div>
-                </div>
-                <div class="contact-actions">
-                    <a href="mailto:ezhilarasan1618@gmail.com" class="btn">Send Mail</a>
-                    <a href="https://github.com/Ezhil1618/my-resume/raw/main/Ezhil HR Resume.pdf" class="btn" download>Download Resume</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications">
-            <h2>Certifications</h2>
-            <div class="certifications-container">
-                <div class="certification-item" onclick="togglePopup(this)">
-                    <i class="fas fa-certificate"></i>
-                    <h3>Transactional Analysis 101</h3>
-                    <p>International Transactional Analysis Association (ITAA)</p>
-                </div>
-                <div class="certification-item" onclick="togglePopup(this)">
-                    <i class="fas fa-language"></i>
-                    <h3>Cambridge English: Business Higher, C1 Level</h3>
-                    <p>University of Cambridge</p>
-                </div>
-                <div class="certification-item" onclick="togglePopup(this)">
-                    <i class="fas fa-chart-bar"></i>
-                    <h3>HR Analytics</h3>
-                    <p>Indian Institute of Management Rohtak</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Notable Projects Section -->
-        <section id="projects">
-            <h2>Notable Projects</h2>
-            <div class="projects-container">
-                <div class="project-item">
-                    <h3>HR Process Automation Initiative</h3>
-                    <p>Led automation of key HR processes, cutting processing time by 40%, increasing data accuracy by 30%, and halving query resolution time through self-service portals.</p>
-                </div>
-                <div class="project-item">
-                    <h3>Company Profile System</h3>
-                    <p>Spearheaded the development of a comprehensive employee profiling system for 6000+ global employees, enhancing visibility of skills and experiences to improve resource allocation and project staffing processes.</p>
-                </div>
-                <div class="project-item">
-                    <h3>Talent Retention Strategy</h3>
-                    <p>Implemented data-driven strategies to tackle early attrition, resulting in a 25% reduction within six months through enhanced onboarding processes, mentorship programs, and feedback systems.</p>
-                </div>
-            </div>
-        </section>
-      
-     <!-- Accomplisments Section --> 
-    <section id="accomplishments">
-    <h2>Accomplishments</h2>
-    <div class="accomplishments-container">
-        <div class="accomplishment-item">
-            <i class="fas fa-award"></i>
-            <h3>Spotlight Award for Innovation</h3>
-            <p>Received from Intellect Design Arena for outstanding performance in Q4 2023</p>
-        </div>
-        <div class="accomplishment-item">
-            <i class="fas fa-chart-line"></i>
-            <h3>Attrition Reduction</h3>
-            <p>Reduced early attrition rates by 15% through targeted HR strategies and data-driven initiatives</p>
-        </div>
-        <div class="accomplishment-item">
-            <i class="fas fa-star"></i>
-            <h3>Star Performer</h3>
-            <p>Recognized as 'Star Performer' for Q3 and Q4 (2020), maintaining 100% SLA in HR operations</p>
-        </div>
-        <div class="accomplishment-item">
-            <i class="fas fa-cogs"></i>
-            <h3>HR Process Automation</h3>
-            <p>Led initiative resulting in 40% reduction in processing time and 30% increase in data accuracy</p>
-        </div>
     </div>
-</section>
-
-        <!-- TEDx Talk Section -->
-        <section id="tedx-talk">
-            <h2>TEDx Talk: The Curious Case of Gaming</h2>
-            <div class="tedx-container">
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/K70eu5gl4qQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="tedx-description">
-                    <p>In this TEDx talk, I delve into the positive aspects of gaming, challenging stereotypes about gaming culture. Drawing from personal experiences and research, I discuss how gaming fosters social connections, builds trust, and offers emotional support—insights that have profoundly influenced my HR strategies. This talk reflects my innovative approach to HR, showcasing how unconventional ideas, can enhance workplace dynamics.</p>
-                </div>
-            </div>
-            <div class="tedx-facts">
-                <div class="fact">
-                    <i class="fas fa-users"></i>
-                    <span>200+ Attendees</span>
-                </div>
-                <div class="fact">
-                    <i class="fas fa-globe"></i>
-                    <span>Global Audience Reach</span>
-                </div>
-                <div class="fact">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Innovative HR Concepts</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Future Vision Section -->
-        <section id="future-vision">
-            <h2>Future Vision: The Evolution of HR</h2>
-            <div class="vision-container">
-                <div class="vision-intro">
-                    <p>As an HR professional at the forefront of innovation, I envision a transformative future for Human Resources and workplace dynamics. Here are key areas where I believe HR will evolve and how I aim to contribute to this evolution:</p>
-                </div>
-                <div class="vision-grid">
-                    <div class="vision-item">
-                        <i class="fas fa-robot"></i>
-                        <h3>AI-Driven HR Processes</h3>
-                        <p>Leveraging artificial intelligence to streamline recruitment, performance management, and employee engagement, while maintaining a human-centric approach.</p>
-                    </div>
-                    <div class="vision-item">
-                        <i class="fas fa-vr-cardboard"></i>
-                        <h3>Virtual and Augmented Reality in Training</h3>
-                        <p>Implementing VR and AR technologies to create immersive, effective training experiences that enhance skill development and knowledge retention.</p>
-                    </div>
-                    <div class="vision-item">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Data-Driven Decision Making</h3>
-                        <p>Advancing the use of HR analytics to make more informed, predictive decisions about workforce planning, talent management, and organizational design.</p>
-                    </div>
-                    <div class="vision-item">
-                        <i class="fas fa-users-cog"></i>
-                        <h3>Agile HR Methodologies</h3>
-                        <p>Adapting agile principles from software development to HR practices, fostering flexibility, rapid iteration, and continuous improvement in HR strategies.</p>
-                    </div>
-                </div>
-                <div class="vision-statement">
-                    <h3>My Commitment</h3>
-                    <p>I am dedicated to pioneering these advancements in HR, continually learning and adapting to new technologies and methodologies. My goal is to create workplaces that are not only efficient and productive but also deeply human-centric and fulfilling for employees.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Ezhil Arasan M. All rights reserved.</p>
-    </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Reveal sections on scroll
-        const revealSection = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-
-        const sectionObserver = new IntersectionObserver(revealSection, {
-            root: null,
-            threshold: 0.15,
-        });
-
-        document.querySelectorAll('section').forEach(section => {
-            sectionObserver.observe(section);
-        });
-
-        // Sticky navigation
-        const nav = document.querySelector('nav');
-        const navTop = nav.offsetTop;
-
-        function stickyNavigation() {
-            if (window.scrollY >= navTop) {
-                document.body.style.paddingTop = nav.offsetHeight + 'px';
-                document.body.classList.add('fixed-nav');
-            } else {
-                document.body.style.paddingTop = 0;
-                document.body.classList.remove('fixed-nav');
-            }
-        }
-
-        window.addEventListener('scroll', stickyNavigation);
-
-        // Scroll to explore animation
-        document.querySelector('.scroll-me').addEventListener('click', () => {
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: 'smooth'
-            });
-        });
-
-        // Animate skill bars
-        const skillItems = document.querySelectorAll('.skill-item');
-        const animateSkills = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const skillLevel = entry.target.getAttribute('data-skill');
-                    entry.target.style.setProperty('--skill-level', `${skillLevel}%`);
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-
-        const skillObserver = new IntersectionObserver(animateSkills, {
-            threshold: 0.5,
-        });
-
-        skillItems.forEach(item => {
-            skillObserver.observe(item);
-        });
-
-        // Handle form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Here you would typically send the form data to a server
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
-
-        // Add parallax effect to timeline
-        window.addEventListener('scroll', () => {
-            const timeline = document.querySelector('.timeline');
-            const speed = 0.5;
-            const yPos = -(window.pageYOffset * speed);
-            timeline.style.backgroundPosition = `50% ${yPos}px`;
-        });
-
-        // Animate certification items
-        const certificationItems = document.querySelectorAll('.certification-item');
-        const animateCertifications = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-
-        const certificationObserver = new IntersectionObserver(animateCertifications, {
-            threshold: 0.5,
-        });
-
-        certificationItems.forEach(item => {
-            item.style.opacity = 0;
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            certificationObserver.observe(item);
-        });
-
-        // Animate project items
-        const projectItems = document.querySelectorAll('.project-item');
-        const animateProjects = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated', 'fadeInUp');
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-
-        const projectObserver = new IntersectionObserver(animateProjects, {
-            threshold: 0.5,
-        });
-
-        projectItems.forEach(item => {
-            projectObserver.observe(item);
-        });
-
-        // Add tilt effect to portfolio items
-        VanillaTilt.init(document.querySelectorAll(".portfolio-item"), {
-            max: 25,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.5,
-        });
-
-        // Animate TEDx section on scroll
-        const tedxSection = document.getElementById('tedx-talk');
-        const animateTEDx = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-
-        const tedxObserver = new IntersectionObserver(animateTEDx, {
-            threshold: 0.2,
-        });
-
-        tedxObserver.observe(tedxSection);
-
-        // Animate vision items and statement on scroll
-        const visionElements = document.querySelectorAll('.vision-item, .vision-statement');
-        const animateVision = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-
-        const visionObserver = new IntersectionObserver(animateVision, {
-            threshold: 0.2,
-        });
-
-        visionElements.forEach(element => {
-            visionObserver.observe(element);
-        });
-
-        function togglePopup(element) {
-            element.classList.toggle('active');
-        }
-
-        // Add animation for sections on scroll
-        const sections = document.querySelectorAll('section');
+        // Animate sections on scroll
+        const sections = document.querySelectorAll('.section');
+        
         const observerOptions = {
-            root: null,
-            threshold: 0.1,
-            rootMargin: "0px"
+            threshold: 0.1
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                    entry.target.style.transition = 'all 0.5s ease';
                 }
             });
         }, observerOptions);
@@ -1371,31 +223,22 @@
         sections.forEach(section => {
             observer.observe(section);
         });
-      // Animate accomplishment items
-const accomplishmentItems = document.querySelectorAll('.accomplishment-item');
-const animateAccomplishments = (entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-        }
-    });
-};
 
-const accomplishmentObserver = new IntersectionObserver(animateAccomplishments, {
-    threshold: 0.5,
-});
+        // Add ripple effect handler
+        document.addEventListener('click', function(e) {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            document.body.appendChild(ripple);
+            
+            ripple.addEventListener('animationend', () => {
+                ripple.remove();
+            });
+        });
 
-accomplishmentItems.forEach(item => {
-    item.style.opacity = 0;
-    item.style.transform = 'translateY(20px)';
-    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    accomplishmentObserver.observe(item);
-});
-
-        // Particle.js configuration
-        particlesJS("particles-js", {
+        // Update particles configuration with gradient colors
+        particlesJS('particles-js', {
             particles: {
                 number: {
                     value: 80,
@@ -1405,52 +248,89 @@ accomplishmentItems.forEach(item => {
                     }
                 },
                 color: {
-                    value: "#ffffff"
+                    value: ['#3498db', '#2ecc71', '#e74c3c', '#f1c40f', '#9b59b6']  // Multiple colors for gradient effect
                 },
                 shape: {
-                    type: "circle"
+                    type: 'circle'
                 },
                 opacity: {
                     value: 0.5,
-                    random: false
+                    random: true,  // Random opacity for more dynamic effect
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
                 },
                 size: {
                     value: 3,
-                    random: true
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1,
+                        sync: false
+                    }
                 },
                 line_linked: {
                     enable: true,
                     distance: 150,
-                    color: "#ffffff",
+                    color: '#3498db',
                     opacity: 0.4,
-                    width: 1
+                    width: 1,
+                    color_rgb_line: true  // Enable color mixing for lines
                 },
                 move: {
                     enable: true,
                     speed: 2,
-                    direction: "none",
-                    random: false,
+                    direction: 'none',
+                    random: true,  // Random movement for more organic feel
                     straight: false,
-                    out_mode: "out",
-                    bounce: false
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {  // Add subtle attraction behavior
+                        enable: true,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
                 }
             },
             interactivity: {
-                detect_on: "canvas",
+                detect_on: 'canvas',
                 events: {
                     onhover: {
                         enable: true,
-                        mode: "repulse"
+                        mode: 'repulse'
                     },
                     onclick: {
                         enable: true,
-                        mode: "push"
+                        mode: 'push'
                     },
                     resize: true
+                },
+                modes: {
+                    repulse: {
+                        distance: 100,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
                 }
             },
             retina_detect: true
         });
+
+        // Color cycling animation for particles
+        let hue = 0;
+        setInterval(() => {
+            hue = (hue + 1) % 360;
+            const particles = pJSDom[0].pJS.particles.array;
+            particles.forEach(particle => {
+                particle.color.value = `hsl(${(hue + particle.position.x) % 360}, 70%, 60%)`;
+            });
+        }, 50);
     </script>
 </body>
 </html>
