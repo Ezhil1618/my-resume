@@ -17,11 +17,17 @@
             cursor: url('custom-cursor.png'), auto;
         }
 
+        :root {
+            --background-color: #f0f2f5;
+            --text-color: #333;
+        }
+
         body {
-            background: #f0f2f5;
-            color: #333;
+            background: var(--background-color);
+            color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background 0.5s, color 0.5s;
         }
 
         .parallax {
@@ -160,6 +166,26 @@
                 opacity: 0;
             }
         }
+
+        #three-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #3498db;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -210,6 +236,10 @@
             <canvas id="skillsChart" width="400" height="400"></canvas>
         </section>
     </div>
+
+    <canvas id="three-canvas"></canvas>
+
+    <div class="theme-toggle" onclick="toggleTheme()">Switch Theme</div>
 
     <script>
         // Animate sections on scroll
@@ -368,6 +398,47 @@
         new Vivus('my-svg', { duration: 200 }, function () {
             console.log('SVG animation completed');
         });
+
+        // Initialize Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        
+        // Create particles
+        const particles = new THREE.BufferGeometry();
+        const particleCount = 1000;
+        const positions = new Float32Array(particleCount * 3);
+        for (let i = 0; i < particleCount; i++) {
+            positions[i * 3] = (Math.random() - 0.5) * 10;
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+        }
+        particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        
+        const particleMaterial = new THREE.PointsMaterial({ color: 0x888888 });
+        const particleSystem = new THREE.Points(particles, particleMaterial);
+        scene.add(particleSystem);
+        
+        camera.position.z = 5;
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            particleSystem.rotation.y += 0.001;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        function toggleTheme() {
+            const root = document.documentElement;
+            if (root.style.getPropertyValue('--background-color') === '#f0f2f5') {
+                root.style.setProperty('--background-color', '#333');
+                root.style.setProperty('--text-color', '#f0f2f5');
+            } else {
+                root.style.setProperty('--background-color', '#f0f2f5');
+                root.style.setProperty('--text-color', '#333');
+            }
+        }
     </script>
 </body>
 </html>
