@@ -529,6 +529,83 @@
             }
         }
 
+        .section-container {
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: rgba(17, 34, 64, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .commitment-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .commitment-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .commitment-item i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .commitment-item h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .commitment-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .tedx-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .video-description {
+            max-width: 800px;
+            margin: 2rem auto;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: 0 1rem;
+        }
+
         .footer-section {
             margin-top: 4rem;
             padding: 4rem 2rem;
@@ -736,22 +813,41 @@
                 <li>Received 'Star Performer' award for maintaining 100% SLA in HR operations</li>
                 <li>Received 'Spotlight Award for Innovation' from Intellect Design Arena for outstanding performance in Q4 2023</li>
             </ul>
-            <div class="tedx-section">
-                <h3>Watch my TEDx Talk</h3>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/K70eu5gl4qQ" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="tedx-description">
-                    <p>In this TEDx talk, I explore the positive impact of gaming on social connections, trust-building, and emotional support. 
-                    These insights have influenced my approach to HR strategies, demonstrating how unconventional perspectives can enhance workplace dynamics.</p>
-                </div>
-            </div>
         </section>
     </div>
+
+    <section class="section-container">
+        <h2 class="section-title">Watch my TEDx Talk</h2>
+        <p class="section-subtitle">Exploring the positive impact of gaming on social connections, trust-building, and emotional support</p>
+        <div class="tedx-container">
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/K70eu5gl4qQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-description">In this TEDx talk, I explore the positive impact of gaming on social connections, trust building, and emotional support. These insights have influenced my approach to HR strategies, demonstrating how unconventional perspectives can enhance workplace dynamics.</p>
+        </div>
+    </section>
+
+    <section class="section-container">
+        <h2 class="section-title">My Commitment</h2>
+        <p class="section-subtitle">Driving innovation and excellence in HR through technology, data, and human-centric approaches</p>
+        <div class="commitment-grid">
+            <div class="commitment-item">
+                <i class="fas fa-chart-line"></i>
+                <h3>Data-Driven Excellence</h3>
+                <p>Committed to leveraging analytics and insights to make informed decisions and drive organizational success.</p>
+            </div>
+            <div class="commitment-item">
+                <i class="fas fa-robot"></i>
+                <h3>Innovation & Automation</h3>
+                <p>Dedicated to implementing cutting-edge HR automation solutions that enhance efficiency and employee experience.</p>
+            </div>
+            <div class="commitment-item">
+                <i class="fas fa-users"></i>
+                <h3>People First</h3>
+                <p>Focused on creating human-centric workplace solutions that prioritize employee well-being and growth.</p>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer-section">
         <div class="footer-content">
@@ -769,8 +865,6 @@
             </div>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/ezhil-arasan-ez1618/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Ezhil1618" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/EzhilArasan1618" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
             </div>
             <p class="copyright"> 2024 Ezhil Arasan M. All rights reserved.</p>
         </div>
