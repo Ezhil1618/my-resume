@@ -1045,6 +1045,38 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .accomplishments-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .accomplishments-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .accomplishments-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .accomplishment-item {
+            background: rgba(16, 33, 65, 0.4);
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .accomplishment-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -1181,11 +1213,17 @@
 
         <section class="card">
             <h2>Accomplishments</h2>
-            <ul class="accomplishments-list">
-                <li>Delivered a TEDx Talk on 'Curious Case of Gaming'</li>
-                <li>Received 'Star Performer' award for maintaining <span class="metric-highlight">100%</span> SLA in HR operations</li>
-                <li>Received 'Spotlight Award for Innovation' from Intellect Design Arena for outstanding performance in Q4 2023</li>
-            </ul>
+            <div class="accomplishments-list">
+                <div class="accomplishment-item">
+                    <li>Delivered a TEDx Talk on 'Curious Case of Gaming'</li>
+                </div>
+                <div class="accomplishment-item">
+                    <li>Received 'Star Performer' award for maintaining <span class="metric-highlight">100%</span> SLA in HR operations</li>
+                </div>
+                <div class="accomplishment-item">
+                    <li>Received 'Spotlight Award for Innovation' from Intellect Design Arena for outstanding performance in Q4 2023</li>
+                </div>
+            </div>
         </section>
 
         <section class="card">
