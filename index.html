@@ -206,14 +206,27 @@
         }
 
         @media (max-width: 768px) {
+            .landing-section {
+                min-height: 90vh;
+                padding: 1rem;
+            }
+
             .landing-title {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
+
             .landing-subtitle {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
+                margin: 1.5rem 0;
             }
+
             .landing-description {
                 font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .scroll-indicator {
+                bottom: 1rem;
             }
         }
 
@@ -400,28 +413,49 @@
         }
 
         .experience-item {
-            padding: 1.5rem;
-            border-left: 3px solid var(--accent-color);
+            padding: 2rem;
             margin: 1.5rem 0;
             position: relative;
             transition: all 0.3s ease;
+            background: rgba(16, 33, 65, 0.4);
+            border-radius: 10px;
         }
 
-        .experience-item::before {
-            content: '';
+        .experience-item h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .company {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .experience-item li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .experience-item li::before {
+            content: "▹";
             position: absolute;
-            left: -8px;
-            top: 0;
-            width: 13px;
-            height: 13px;
-            border-radius: 50%;
-            background: var(--accent-color);
-            transform: scale(0);
-            transition: transform 0.3s ease;
+            left: 0;
+            color: var(--accent-color);
         }
 
-        .experience-item:hover::before {
-            transform: scale(1);
+        .metric-highlight {
+            color: var(--accent-color);
+            font-weight: 600;
         }
 
         .skills-grid {
@@ -877,11 +911,13 @@
 
         <section class="card">
             <h2>Professional Summary</h2>
-            <p>Dynamic and results-driven professional with over 5 years of proven expertise in transforming HR operations through data
-            analytics, automation, and strategic insights. With a strong foundation in workforce optimization and process efficiency, I have
-            a track record of driving measurable improvements that enhance organizational performance. Armed with advanced knowledge from
-            one of India's premier business institutions, I bring a unique blend of technical prowess and strategic acumen to solve complex
-            business challenges, now seeking to channel my expertise into a Full Analyst Role.</p>
+            <p style="text-align: justify">
+                Dynamic and results-driven professional with over 6 years of proven expertise in transforming HR operations through data
+                analytics, automation, and strategic insights. With a strong foundation in workforce optimization and process efficiency, I have
+                a track record of driving measurable improvements that enhance organizational performance. Armed with advanced knowledge from
+                one of India's premier business institutions, I bring a unique blend of technical prowess and strategic acumen to solve complex
+                business challenges, now seeking to channel my expertise into a Full Analyst Role.
+            </p>
         </section>
 
         <section class="card">
@@ -889,26 +925,26 @@
             <div class="experience-item">
                 <h3>HR Automation & Talent Intelligence Specialist</h3>
                 <p class="company">Intellect Design Arena Ltd, Chennai India | 07/2022 to Current</p>
-                <ul>
+                <ul style="text-align: justify">
                     <li>Developed and deployed a comprehensive HR automation solution using Google Apps Script, automating complex
-                    manual data management processes. This resulted in a 30% reduction in processing time, eliminated data discrepancies,
+                    manual data management processes. This resulted in a <span class="metric-highlight">30%</span> reduction in processing time, eliminated data discrepancies,
                     and created a self-service platform for real-time reporting and data validation.</li>
                     <li>Designed and led the Talent Intelligence & Skill Mapping initiative, creating a robust analytics framework that mapped
                     the Indian IT talent landscape across various roles and technologies. This framework enabled HR leaders to improve
-                    recruitment strategies by 20%, optimizing candidate targeting.</li>
+                    recruitment strategies by <span class="metric-highlight">20%</span>, optimizing candidate targeting.</li>
                     <li>Engineered a headcount forecasting model to support strategic workforce planning, enabling scenario simulations and
-                    improving staffing efficiency by 25%, ensuring alignment with future business needs.</li>
+                    improving staffing efficiency by <span class="metric-highlight">25%</span>, ensuring alignment with future business needs.</li>
                 </ul>
             </div>
             <div class="experience-item">
                 <h3>HR Business Partner</h3>
                 <p class="company">Reliance Jio Infocomm Limited, Madurai India | 02/2019 to 07/2022</p>
-                <ul>
-                    <li>HR Business Partner for over 800 employees, aligning HR initiatives with business objectives to ensure seamless
+                <ul style="text-align: justify">
+                    <li>HR Business Partner for over <span class="metric-highlight">800</span> employees, aligning HR initiatives with business objectives to ensure seamless
                     integration between people strategy and operational goals.</li>
-                    <li>Implemented data-driven retention strategies, resulting in a 23% reduction in turnover across key departments by
+                    <li>Implemented data-driven retention strategies, resulting in a <span class="metric-highlight">23%</span> reduction in turnover across key departments by
                     addressing employee engagement and improving retention frameworks.</li>
-                    <li>Streamlined recruitment processes, reducing time-to-hire by 17% for critical roles, ensuring faster onboarding of
+                    <li>Streamlined recruitment processes, reducing time-to-hire by <span class="metric-highlight">17%</span> for critical roles, ensuring faster onboarding of
                     high-impact talent and optimizing workforce efficiency.</li>
                 </ul>
             </div>
@@ -948,7 +984,7 @@
             <h2>Accomplishments</h2>
             <ul class="accomplishments-list">
                 <li>Delivered a TEDx Talk on 'Curious Case of Gaming'</li>
-                <li>Received 'Star Performer' award for maintaining 100% SLA in HR operations</li>
+                <li>Received 'Star Performer' award for maintaining <span class="metric-highlight">100%</span> SLA in HR operations</li>
                 <li>Received 'Spotlight Award for Innovation' from Intellect Design Arena for outstanding performance in Q4 2023</li>
             </ul>
         </section>
