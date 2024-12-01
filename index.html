@@ -263,6 +263,36 @@
             background-clip: text;
         }
 
+        .tedx-section {
+            margin-top: 2rem;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            margin: 2rem 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .tedx-description {
+            background: var(--glass-background);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 1rem;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -325,6 +355,14 @@
 
             .company, .institution {
                 font-size: 0.85rem;
+            }
+
+            .video-container {
+                margin: 1rem 0;
+            }
+
+            .tedx-description {
+                padding: 1rem;
             }
         }
 
@@ -473,6 +511,20 @@
                 <li>Received 'Star Performer' award for maintaining 100% SLA in HR operations</li>
                 <li>Received 'Spotlight Award for Innovation' from Intellect Design Arena for outstanding performance in Q4 2023</li>
             </ul>
+            <div class="tedx-section">
+                <h3>Watch my TEDx Talk</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/K70eu5gl4qQ" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="tedx-description">
+                    <p>In this TEDx talk, I explore the positive impact of gaming on social connections, trust-building, and emotional support. 
+                    These insights have influenced my approach to HR strategies, demonstrating how unconventional perspectives can enhance workplace dynamics.</p>
+                </div>
+            </div>
         </section>
     </div>
 
