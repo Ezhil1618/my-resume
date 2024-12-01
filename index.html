@@ -160,8 +160,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
-            position: relative;
+            padding: 0 2rem;
         }
 
         .header {
@@ -381,6 +380,8 @@
         .video-container {
             position: relative;
             width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             margin: 2rem 0;
         }
@@ -530,12 +531,13 @@
         }
 
         .section-container {
-            margin: 4rem 0;
+            margin: 4rem auto;
             padding: 3rem 2rem;
             background: rgba(17, 34, 64, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             border: 1px solid rgba(100, 255, 218, 0.1);
+            max-width: 1200px;
         }
 
         .section-title {
@@ -816,38 +818,40 @@
         </section>
     </div>
 
-    <section class="section-container">
-        <h2 class="section-title">Watch my TEDx Talk</h2>
-        <p class="section-subtitle">Exploring the positive impact of gaming on social connections, trust-building, and emotional support</p>
-        <div class="tedx-container">
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/K70eu5gl4qQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="container">
+        <section class="section-container">
+            <h2 class="section-title">Watch my TEDx Talk</h2>
+            <p class="section-subtitle">Exploring the positive impact of gaming on social connections, trust-building, and emotional support</p>
+            <div class="tedx-container">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/K70eu5gl4qQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="video-description">In this TEDx talk, I explore the positive impact of gaming on social connections, trust building, and emotional support. These insights have influenced my approach to HR strategies, demonstrating how unconventional perspectives can enhance workplace dynamics.</p>
             </div>
-            <p class="video-description">In this TEDx talk, I explore the positive impact of gaming on social connections, trust building, and emotional support. These insights have influenced my approach to HR strategies, demonstrating how unconventional perspectives can enhance workplace dynamics.</p>
-        </div>
-    </section>
+        </section>
 
-    <section class="section-container">
-        <h2 class="section-title">My Commitment</h2>
-        <p class="section-subtitle">Driving innovation and excellence in HR through technology, data, and human-centric approaches</p>
-        <div class="commitment-grid">
-            <div class="commitment-item">
-                <i class="fas fa-chart-line"></i>
-                <h3>Data-Driven Excellence</h3>
-                <p>Committed to leveraging analytics and insights to make informed decisions and drive organizational success.</p>
+        <section class="section-container">
+            <h2 class="section-title">My Commitment</h2>
+            <p class="section-subtitle">Driving innovation and excellence in HR through technology, data, and human-centric approaches</p>
+            <div class="commitment-grid">
+                <div class="commitment-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Data-Driven Excellence</h3>
+                    <p>Committed to leveraging analytics and insights to make informed decisions and drive organizational success.</p>
+                </div>
+                <div class="commitment-item">
+                    <i class="fas fa-robot"></i>
+                    <h3>Innovation & Automation</h3>
+                    <p>Dedicated to implementing cutting-edge HR automation solutions that enhance efficiency and employee experience.</p>
+                </div>
+                <div class="commitment-item">
+                    <i class="fas fa-users"></i>
+                    <h3>People First</h3>
+                    <p>Focused on creating human-centric workplace solutions that prioritize employee well-being and growth.</p>
+                </div>
             </div>
-            <div class="commitment-item">
-                <i class="fas fa-robot"></i>
-                <h3>Innovation & Automation</h3>
-                <p>Dedicated to implementing cutting-edge HR automation solutions that enhance efficiency and employee experience.</p>
-            </div>
-            <div class="commitment-item">
-                <i class="fas fa-users"></i>
-                <h3>People First</h3>
-                <p>Focused on creating human-centric workplace solutions that prioritize employee well-being and growth.</p>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <footer class="footer-section">
         <div class="footer-content">
