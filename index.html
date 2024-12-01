@@ -189,13 +189,194 @@
             background: rgba(100, 255, 218, 0.2);
         }
 
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a, .contact-info span {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+
+        .title {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .company, .institution {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul, .accomplishments-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .experience-item li, .accomplishments-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .experience-item li::before, .accomplishments-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-left: 3px solid var(--accent-color);
+            background: rgba(100, 255, 218, 0.05);
+            border-radius: 0 10px 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateX(10px);
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(120deg, var(--text-primary), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
             }
             
             .card {
-                padding: 1.5rem;
+                padding: 1.2rem;
+                margin: 1rem 0;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+
+            .title {
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            .profile-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 0.8rem;
+            }
+
+            .skill-item {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .experience-item, .education-item {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+
+            .experience-item li, .accomplishments-list li {
+                font-size: 0.9rem;
+                padding-left: 1.2rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .card h2 {
+                font-size: 1.4rem;
+            }
+
+            .experience-item h3, .education-item h3 {
+                font-size: 1.1rem;
+            }
+
+            .company, .institution {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Additional styles for very small screens */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.8rem;
+            }
+
+            .card {
+                padding: 1rem;
+                margin: 0.8rem 0;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .profile-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            /* Disable tilt effect on mobile for better performance */
+            [data-tilt] {
+                transform: none !important;
+            }
+        }
+
+        /* Ensure proper scaling of the background canvas */
+        @media (max-width: 768px) {
+            #background-canvas {
+                opacity: 0.3; /* Reduce opacity on mobile for better readability */
+            }
+        }
+
+        /* Optimize text readability on mobile */
+        @media (max-width: 768px) {
+            body {
+                line-height: 1.4;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .card {
+                backdrop-filter: blur(8px); /* Slightly reduce blur for better performance */
             }
         }
     </style>
@@ -207,56 +388,117 @@
             <div class="profile-container" data-tilt data-tilt-max="10">
                 <img src="profile-picture.jpg" alt="Profile Picture" class="profile-img">
             </div>
-            <h1>Your Name</h1>
-            <p>Professional Title</p>
+            <h1>EZHIL ARASAN M</h1>
+            <p class="title">HR Automation & Talent Intelligence Specialist</p>
+            <div class="contact-info">
+                <a href="mailto:ezhilarasan1618@gmail.com">ezhilarasan1618@gmail.com</a>
+                <a href="tel:+918098833777">+91 80988 33777</a>
+                <span>Chennai, India</span>
+            </div>
         </header>
 
         <section class="card" data-tilt data-tilt-max="5">
-            <h2>About Me</h2>
-            <p>A brief professional summary about yourself and your career objectives.</p>
+            <h2>Professional Summary</h2>
+            <p>Dynamic and results-driven professional with over 5 years of proven expertise in transforming HR operations through data
+            analytics, automation, and strategic insights. With a strong foundation in workforce optimization and process efficiency, I have
+            a track record of driving measurable improvements that enhance organizational performance. Armed with advanced knowledge from
+            one of India's premier business institutions, I bring a unique blend of technical prowess and strategic acumen to solve complex
+            business challenges, now seeking to channel my expertise into a Full Analyst Role.</p>
         </section>
 
         <section class="card" data-tilt data-tilt-max="5">
             <h2>Experience</h2>
             <div class="experience-item">
-                <h3>Job Title</h3>
-                <p>Company Name | Date - Present</p>
+                <h3>HR Automation & Talent Intelligence Specialist</h3>
+                <p class="company">Intellect Design Arena Ltd, Chennai India | 07/2022 to Current</p>
                 <ul>
-                    <li>Key achievement or responsibility</li>
-                    <li>Key achievement or responsibility</li>
-                    <li>Key achievement or responsibility</li>
+                    <li>Developed and deployed a comprehensive HR automation solution using Google Apps Script, automating complex
+                    manual data management processes. This resulted in a 30% reduction in processing time, eliminated data discrepancies,
+                    and created a self-service platform for real-time reporting and data validation.</li>
+                    <li>Designed and led the Talent Intelligence & Skill Mapping initiative, creating a robust analytics framework that mapped
+                    the Indian IT talent landscape across various roles and technologies. This framework enabled HR leaders to improve
+                    recruitment strategies by 20%, optimizing candidate targeting.</li>
+                    <li>Engineered a headcount forecasting model to support strategic workforce planning, enabling scenario simulations and
+                    improving staffing efficiency by 25%, ensuring alignment with future business needs.</li>
                 </ul>
+            </div>
+            <div class="experience-item">
+                <h3>HR Business Partner</h3>
+                <p class="company">Reliance Jio Infocomm Limited, Madurai India | 02/2019 to 07/2022</p>
+                <ul>
+                    <li>HR Business Partner for over 800 employees, aligning HR initiatives with business objectives to ensure seamless
+                    integration between people strategy and operational goals.</li>
+                    <li>Implemented data-driven retention strategies, resulting in a 23% reduction in turnover across key departments by
+                    addressing employee engagement and improving retention frameworks.</li>
+                    <li>Streamlined recruitment processes, reducing time-to-hire by 17% for critical roles, ensuring faster onboarding of
+                    high-impact talent and optimizing workforce efficiency.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="card" data-tilt data-tilt-max="5">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Post Graduate Certificate: Strategic Human Resource Management</h3>
+                <p class="institution">Indian Institute of Management Trichy | 01/2024</p>
+            </div>
+            <div class="education-item">
+                <h3>MBA: Human Resources and Marketing</h3>
+                <p class="institution">Jansons School of Business, Coimbatore | 05/2019</p>
+            </div>
+            <div class="education-item">
+                <h3>Bachelor of Engineering (B.E.): Civil Engineering</h3>
+                <p class="institution">Panimalar Engineering College, Chennai | 12/2016</p>
             </div>
         </section>
 
         <section class="card" data-tilt data-tilt-max="5">
             <h2>Skills</h2>
             <div class="skills-grid">
-                <div class="skill-item">HTML5</div>
-                <div class="skill-item">CSS3</div>
-                <div class="skill-item">JavaScript</div>
-                <div class="skill-item">React</div>
-                <div class="skill-item">Node.js</div>
+                <div class="skill-item">Data Analysis & Visualization</div>
+                <div class="skill-item">HR Analytics & Reporting</div>
+                <div class="skill-item">Process Automation</div>
+                <div class="skill-item">Strategic Workforce Planning</div>
+                <div class="skill-item">Talent Intelligence</div>
+                <div class="skill-item">HRIS Implementation</div>
+                <div class="skill-item">Employee Engagement</div>
+                <div class="skill-item">Visualization Tools</div>
             </div>
+        </section>
+
+        <section class="card" data-tilt data-tilt-max="5">
+            <h2>Accomplishments</h2>
+            <ul class="accomplishments-list">
+                <li>Delivered a TEDx Talk on 'Curious Case of Gaming'</li>
+                <li>Received 'Star Performer' award for maintaining 100% SLA in HR operations</li>
+                <li>Received 'Spotlight Award for Innovation' from Intellect Design Arena for outstanding performance in Q4 2023</li>
+            </ul>
         </section>
     </div>
 
     <script>
-        // Initialize tilt effect
-        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-            max: 5,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.2,
-        });
+        // Check if device is mobile
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-        // Create floating elements
+        // Initialize tilt effect only on non-mobile devices
+        if (!isMobile) {
+            VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+                max: 5,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.2,
+            });
+        }
+
+        // Create floating elements with reduced number on mobile
         function createFloatingElements() {
             const container = document.querySelector('.container');
-            for (let i = 0; i < 15; i++) {
+            const numberOfElements = isMobile ? 8 : 15; // Reduce number of elements on mobile
+            
+            for (let i = 0; i < numberOfElements; i++) {
                 const element = document.createElement('div');
                 element.className = 'floating-element';
-                element.style.width = Math.random() * 50 + 20 + 'px';
+                element.style.width = Math.random() * (isMobile ? 30 : 50) + 20 + 'px';
                 element.style.height = element.style.width;
                 element.style.left = Math.random() * 100 + '%';
                 element.style.top = Math.random() * 100 + '%';
@@ -265,30 +507,40 @@
             }
         }
 
-        // Initialize Three.js background
+        // Initialize Three.js background with mobile optimizations
         function initBackground() {
             const canvas = document.getElementById('background-canvas');
-            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+            const renderer = new THREE.WebGLRenderer({ 
+                canvas, 
+                alpha: true,
+                antialias: !isMobile // Disable antialiasing on mobile for better performance
+            });
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
             renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(isMobile ? 1 : window.devicePixelRatio); // Lower pixel ratio on mobile
             camera.position.z = 30;
 
-            // Create geometric background with torus knot
-            const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+            // Create geometric background with reduced complexity on mobile
+            const geometry = new THREE.TorusKnotGeometry(
+                10, // radius
+                3,  // tube radius
+                isMobile ? 50 : 100, // tubular segments
+                isMobile ? 8 : 16    // radial segments
+            );
             const material = new THREE.MeshBasicMaterial({ 
                 color: 0x64ffda,
                 wireframe: true,
                 transparent: true,
-                opacity: 0.1
+                opacity: isMobile ? 0.08 : 0.1
             });
             const torusKnot = new THREE.Mesh(geometry, material);
             scene.add(torusKnot);
 
-            // Add floating particles
+            // Add floating particles with reduced count on mobile
             const particlesGeometry = new THREE.BufferGeometry();
-            const particleCount = 2000;
+            const particleCount = isMobile ? 1000 : 2000;
             const posArray = new Float32Array(particleCount * 3);
             
             for(let i = 0; i < particleCount * 3; i++) {
@@ -300,40 +552,56 @@
                 size: 0.05,
                 color: 0x64ffda,
                 transparent: true,
-                opacity: 0.4
+                opacity: isMobile ? 0.3 : 0.4
             });
             
             const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
             scene.add(particlesMesh);
 
-            // Mouse movement effect
+            // Mouse/touch movement effect
             let mouseX = 0;
             let mouseY = 0;
-            document.addEventListener('mousemove', (event) => {
-                mouseX = event.clientX / window.innerWidth - 0.5;
-                mouseY = event.clientY / window.innerHeight - 0.5;
-            });
+            
+            const handleMovement = (event) => {
+                // Handle both mouse and touch events
+                const x = event.clientX || (event.touches ? event.touches[0].clientX : 0);
+                const y = event.clientY || (event.touches ? event.touches[0].clientY : 0);
+                mouseX = x / window.innerWidth - 0.5;
+                mouseY = y / window.innerHeight - 0.5;
+            };
+
+            // Add both mouse and touch event listeners
+            document.addEventListener('mousemove', handleMovement);
+            document.addEventListener('touchmove', handleMovement, { passive: true });
 
             function animate() {
                 requestAnimationFrame(animate);
                 
-                torusKnot.rotation.x += 0.001;
-                torusKnot.rotation.y += 0.002;
+                // Reduce animation complexity on mobile
+                const rotationSpeed = isMobile ? 0.0005 : 0.001;
+                torusKnot.rotation.x += rotationSpeed;
+                torusKnot.rotation.y += rotationSpeed * 2;
                 
-                particlesMesh.rotation.y += 0.001;
-                particlesMesh.rotation.x += mouseX * 0.001;
-                particlesMesh.rotation.y += mouseY * 0.001;
+                particlesMesh.rotation.y += rotationSpeed;
+                if (!isMobile) {
+                    particlesMesh.rotation.x += mouseX * 0.001;
+                    particlesMesh.rotation.y += mouseY * 0.001;
+                }
                 
                 renderer.render(scene, camera);
             }
 
             animate();
 
-            window.addEventListener('resize', () => {
+            // Handle window resize
+            const handleResize = () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
-            });
+            };
+
+            window.addEventListener('resize', handleResize);
+            window.addEventListener('orientationchange', handleResize);
         }
 
         // Initialize everything
