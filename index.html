@@ -980,6 +980,71 @@
                 padding: 0.3rem 0.8rem;
             }
         }
+
+        /* Scroll Animation Styles */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-fade-in > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .stagger-fade-in.visible > *:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-fade-in.visible > *:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-fade-in.visible > *:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-fade-in.visible > *:nth-child(4) { transition-delay: 0.4s; }
+        .stagger-fade-in.visible > *:nth-child(5) { transition-delay: 0.5s; }
+        .stagger-fade-in.visible > *:nth-child(6) { transition-delay: 0.6s; }
+        .stagger-fade-in.visible > *:nth-child(7) { transition-delay: 0.7s; }
+        .stagger-fade-in.visible > *:nth-child(8) { transition-delay: 0.8s; }
+
+        .stagger-fade-in.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-reveal {
+            position: relative;
+        }
+
+        .timeline-reveal::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--accent-color);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.8s ease-out;
+        }
+
+        .timeline-reveal.visible::before {
+            transform: scaleY(1);
+        }
+
+        .metric-number {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+
+        .metric-number.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -988,8 +1053,8 @@
         <div class="particles"></div>
         <div class="landing-content">
             <h1 class="landing-title">Ezhil Arasan M</h1>
-            <p class="landing-subtitle typing-effect">HR Automation & Talent Intelligence Specialist</p>
-            <p class="landing-description">Transforming HR through Data Analytics & Automation</p>
+            <p class="landing-subtitle typing-effect">HR Analytics & Automation Specialist</p>
+            <p class="landing-description">Designing frameworks that resonate and evolve</p>
         </div>
         <a href="#main-content" class="scroll-indicator">
             <span class="scroll-text">Explore My Journey</span>
@@ -1003,7 +1068,7 @@
                 <img src="https://raw.githubusercontent.com/Ezhil1618/my-resume/refs/heads/main/PROFILE%20Pic.jpg" alt="Profile Picture" class="profile-img">
             </div>
             <h1>EZHIL ARASAN M</h1>
-            <p class="title">HR Automation & Talent Intelligence Specialist</p>
+            <p class="title">HR Analytics & Automation Specialist</p>
             <div class="contact-info">
                 <a href="mailto:ezhilarasan1618@gmail.com"><i class="fas fa-envelope"></i>ezhilarasan1618@gmail.com</a>
                 <a href="tel:+918098833777"><i class="fas fa-phone"></i>+91 80988 33777</a>
@@ -1031,7 +1096,7 @@
         <section class="card">
             <h2>Experience</h2>
             <div class="experience-item">
-                <h3>HR Automation & Talent Intelligence Specialist</h3>
+                <h3>HR Analytics & Automation Specialist</h3>
                 <p class="company">Intellect Design Arena Ltd, Chennai India | 07/2022 to Current</p>
                 <ul style="text-align: justify">
                     <li>Developed and deployed a comprehensive HR automation solution using Google Apps Script, automating complex
@@ -1526,6 +1591,78 @@
             }
 
             setTimeout(typeText, 1500); // Start typing after initial animation
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('metric-number')) {
+                        animateNumber(entry.target);
+                    }
+                }
+            });
+        };
+
+        const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+        // Animate numbers
+        function animateNumber(element) {
+            const target = parseInt(element.getAttribute('data-value'));
+            const duration = 1500;
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            const isPercentage = element.textContent.includes('%');
+
+            const updateNumber = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.round(current) + (isPercentage ? '%' : '');
+                    requestAnimationFrame(updateNumber);
+                } else {
+                    element.textContent = target + (isPercentage ? '%' : '');
+                }
+            };
+
+            updateNumber();
+        }
+
+        // Initialize animations after DOM content is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize scroll animations
+            document.querySelectorAll('.card').forEach(el => {
+                el.classList.add('fade-in-up');
+                scrollObserver.observe(el);
+            });
+
+            document.querySelectorAll('.skills-grid').forEach(el => {
+                el.classList.add('stagger-fade-in');
+                scrollObserver.observe(el);
+            });
+
+            document.querySelectorAll('.experience-item').forEach(el => {
+                el.classList.add('timeline-reveal');
+                scrollObserver.observe(el);
+            });
+
+            // Add metric number animations
+            document.querySelectorAll('.metric-highlight').forEach(el => {
+                const originalText = el.textContent;
+                const number = originalText.match(/\d+/)[0];
+                const hasPercentage = originalText.includes('%');
+                el.classList.add('metric-number');
+                el.setAttribute('data-value', number);
+                el.textContent = number + (hasPercentage ? '%' : '');
+                scrollObserver.observe(el);
+            });
         });
     </script>
 </body>
