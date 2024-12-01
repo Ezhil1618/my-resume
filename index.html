@@ -528,6 +528,107 @@
                 backdrop-filter: blur(8px); /* Slightly reduce blur for better performance */
             }
         }
+
+        .footer-section {
+            margin-top: 4rem;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: rgba(17, 34, 64, 0.7);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .footer-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button i {
+            font-size: 1.2rem;
+        }
+
+        .cta-button:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+        }
+
+        .download-button {
+            background: var(--accent-color);
+            color: var(--bg-dark);
+        }
+
+        .download-button:hover {
+            background: var(--accent-color);
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-title {
+                font-size: 2rem;
+            }
+            .footer-subtitle {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -651,6 +752,29 @@
             </div>
         </section>
     </div>
+
+    <footer class="footer-section">
+        <div class="footer-content">
+            <h2 class="footer-title">Let's Connect</h2>
+            <p class="footer-subtitle">Interested in discussing HR automation, data analytics, or gaming's impact on workplace dynamics?</p>
+            <div class="cta-buttons">
+                <a href="mailto:ezhilarasan1618@gmail.com" class="cta-button">
+                    <i class="fas fa-envelope"></i>
+                    Get in Touch
+                </a>
+                <a href="https://github.com/Ezhil1618/my-resume/raw/main/Ezhil HR Resume.pdf" class="cta-button download-button" download>
+                    <i class="fas fa-download"></i>
+                    Download Resume
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/ezhil-arasan-ez1618/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Ezhil1618" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/EzhilArasan1618" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright"> 2024 Ezhil Arasan M. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         // Check if device is mobile
