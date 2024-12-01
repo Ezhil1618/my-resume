@@ -3,19 +3,573 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Background Template</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Crazy Enhanced Resume</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vivus@0.4.6/dist/vivus.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            cursor: url('custom-cursor.png'), auto;
+        }
+
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #2ecc71;
+            --background-start: #2c3e50;
+            --background-end: #3498db;
+            --text-color: #333;
+            --glass-background: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--background-start), var(--background-end));
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .parallax {
+            background-image: url('your-background-image.jpg');
+            min-height: 400px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease forwards;
+            background: var(--glass-background);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--glass-background);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: profilePulse 3s infinite;
+        }
+
+        @keyframes profilePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        h1, h2, h3 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            background: var(--glass-background);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0 15px 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            border-left-color: var(--secondary-color);
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .ripple {
+            position: fixed;
+            border-radius: 50%;
+            background: rgba(52, 152, 219, 0.4);
+            transform: scale(0);
+            animation: rippleEffect 1s linear;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        #three-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(52, 152, 219, 0.2);
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            width: 0;
+            transition: width 1s ease;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .landing-area {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+
+        .landing-area h1, 
+        .landing-area p {
+            font-weight: 700;  /* Make text bolder */
+        }
+
+        .landing-area h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);  /* Stronger shadow for better visibility */
+        }
+
+        .landing-area p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);  /* Stronger shadow for better visibility */
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-30px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="background">
-        <div class="gradient-overlay"></div>
-    </div>
-    
-    <main class="content">
-        <div class="container">
-            <h1>Welcome</h1>
-            <p>This is a modern template with an animated background</p>
+    <div id="particles-js"></div>
+    <canvas id="three-canvas"></canvas>
+
+    <div class="landing-area">
+        <h1>Welcome to My Resume</h1>
+        <p>Scroll down to explore my journey</p>
+        <div class="scroll-indicator">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
         </div>
-    </main>
+    </div>
+
+    <div class="parallax"></div>
+    <div class="container">
+        <header class="header">
+            <img src="your-profile-image.jpg" alt="Profile Picture" class="profile-img">
+            <h1>Your Name</h1>
+            <p>Professional Title</p>
+            <div class="contact-info">
+                <a href="mailto:your.email@example.com">Email</a>
+                <a href="tel:+1234567890">Phone</a>
+                <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>
+                <a href="https://github.com/yourusername">GitHub</a>
+            </div>
+        </header>
+
+        <section class="section" id="about">
+            <h2>About Me</h2>
+            <p>A brief professional summary about yourself and your career objectives.</p>
+        </section>
+
+        <section class="section" id="experience">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <h3>Job Title</h3>
+                <p>Company Name | Date - Present</p>
+                <ul>
+                    <li>Key achievement or responsibility</li>
+                    <li>Key achievement or responsibility</li>
+                    <li>Key achievement or responsibility</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Degree Name</h3>
+                <p>University Name | Graduation Year</p>
+                <p>Relevant coursework or achievements</p>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-tag">HTML</div>
+                <div class="skill-tag">CSS</div>
+                <div class="skill-tag">JavaScript</div>
+                <div class="skill-tag">React</div>
+                <div class="skill-tag">Node.js</div>
+                <!-- Add more skills as needed -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Animate sections on scroll
+        const sections = document.querySelectorAll('.section');
+        
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                    entry.target.style.transition = 'all 0.5s ease';
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add ripple effect handler
+        document.addEventListener('click', function(e) {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            document.body.appendChild(ripple);
+            
+            ripple.addEventListener('animationend', () => {
+                ripple.remove();
+            });
+        });
+
+        // Update particles configuration with gradient colors
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 100,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ['#3498db', '#2ecc71', '#e74c3c', '#f1c40f', '#9b59b6']  // Multiple colors for gradient effect
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.8,
+                    random: true,  // Random opacity for more dynamic effect
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#3498db',
+                    opacity: 0.4,
+                    width: 1,
+                    color_rgb_line: true  // Enable color mixing for lines
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: true,  // Random movement for more organic feel
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {  // Add subtle attraction behavior
+                        enable: true,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    repulse: {
+                        distance: 100,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Color cycling animation for particles
+        let hue = 0;
+        setInterval(() => {
+            hue = (hue + 1) % 360;
+            const particles = pJSDom[0].pJS.particles.array;
+            particles.forEach(particle => {
+                particle.color.value = `hsl(${(hue + particle.position.x) % 360}, 70%, 60%)`;
+            });
+        }, 50);
+
+        // Enhanced Three.js background
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // Create a more interesting geometric background
+        const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+        const material = new THREE.MeshBasicMaterial({ 
+            color: 0x3498db,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.1
+        });
+        const torusKnot = new THREE.Mesh(geometry, material);
+        scene.add(torusKnot);
+
+        // Add floating particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particleCount = 2000;
+        const posArray = new Float32Array(particleCount * 3);
+        
+        for(let i = 0; i < particleCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 50;
+        }
+        
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.05,
+            color: 0x3498db,
+            transparent: true,
+            opacity: 0.8
+        });
+        
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        camera.position.z = 30;
+
+        // Mouse movement effect
+        let mouseX = 0;
+        let mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX / window.innerWidth - 0.5;
+            mouseY = event.clientY / window.innerHeight - 0.5;
+        });
+
+        // Animation
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            torusKnot.rotation.x += 0.001;
+            torusKnot.rotation.y += 0.002;
+            
+            particlesMesh.rotation.y += 0.001;
+            particlesMesh.rotation.x += mouseX * 0.001;
+            particlesMesh.rotation.y += mouseY * 0.001;
+            
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Add this new code for skills animation
+        const progressBars = document.querySelectorAll('.progress');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.getAttribute('data-width');
+                    entry.target.style.width = `${width}%`;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        progressBars.forEach(bar => {
+            skillObserver.observe(bar);
+        });
+
+        // Add smooth scroll behavior
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            document.querySelector('.container').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+    </script>
 </body>
 </html>
