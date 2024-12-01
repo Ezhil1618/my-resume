@@ -78,7 +78,7 @@
 
         .landing-subtitle {
             font-size: 1.8rem;
-            color: var(--text-secondary);
+            color: var(--text-primary);
             margin: 2rem 0;
             opacity: 0;
             animation: fadeIn 1s ease forwards;
@@ -86,7 +86,7 @@
         }
 
         .landing-description {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
@@ -373,12 +373,10 @@
 
         .card {
             background: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 2rem;
             margin: 2rem 0;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .card:hover {
@@ -391,7 +389,6 @@
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
             position: relative;
-            display: inline-block;
         }
 
         .card h2::after {
@@ -635,8 +632,8 @@
             }
 
             .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 0.8rem;
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
             .skill-item {
@@ -789,7 +786,7 @@
         }
 
         .commitment-item p {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             font-size: 0.95rem;
             line-height: 1.6;
         }
@@ -802,7 +799,7 @@
         .video-description {
             max-width: 700px;
             margin: 2rem auto;
-            color: var(--text-secondary);
+            color: var(--text-primary);
             line-height: 1.6;
             padding: 1.5rem;
             background: rgba(255, 255, 255, 0.05);
@@ -830,7 +827,7 @@
         }
 
         .footer-subtitle {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             margin-bottom: 2rem;
             font-size: 1.1rem;
         }
@@ -885,7 +882,7 @@
         }
 
         .social-links a {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             font-size: 1.5rem;
             transition: all 0.3s ease;
         }
@@ -897,7 +894,7 @@
 
         .copyright {
             margin-top: 2rem;
-            color: var(--text-secondary);
+            color: var(--text-primary);
             font-size: 0.9rem;
         }
 
@@ -928,19 +925,58 @@
         .profile-summary {
             background: rgba(16, 33, 65, 0.4);
             border-radius: 10px;
-            padding: 2rem;
-            margin: 2rem 0;
-            line-height: 1.8;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
         }
 
         .profile-summary p {
-            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
             text-align: justify;
         }
 
         .key-highlight {
             color: var(--accent-color);
             font-weight: 500;
+        }
+
+        .tedx-container {
+            background: rgba(16, 33, 65, 0.4);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .tedx-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-description {
+            line-height: 1.6;
+            margin-top: 1rem;
+            color: var(--text-primary);
         }
 
         .profile-tags {
@@ -954,7 +990,7 @@
         .profile-tag {
             background: rgba(100, 255, 218, 0.1);
             color: var(--accent-color);
-            padding: 0.4rem 1rem;
+            padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
             transition: all 0.3s ease;
@@ -968,7 +1004,7 @@
         @media (max-width: 768px) {
             .profile-summary {
                 padding: 1.5rem;
-                margin: 1.5rem 0;
+                margin: 1rem 0;
             }
 
             .profile-tags {
@@ -1077,6 +1113,157 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
         }
+
+        .experience-item {
+            padding: 2rem;
+            margin: 1.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+            background: rgba(16, 33, 65, 0.4);
+            border-radius: 10px;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
+        }
+
+        .tedx-section {
+            background: rgba(16, 33, 65, 0.4);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .tedx-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
+        }
+
+        .tedx-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .tedx-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tedx-section .cta-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tedx-section .cta-button:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Standardize card and section styling */
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Standardize section containers */
+        .profile-summary,
+        .experience-item,
+        .tedx-container,
+        .accomplishment-item {
+            background: rgba(16, 33, 65, 0.4);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .profile-summary:hover,
+        .experience-item:hover,
+        .tedx-container:hover,
+        .accomplishment-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
+        }
+
+        /* Standardize headings */
+        .card h2 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .experience-item h3,
+        .accomplishment-item h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Standardize paragraphs */
+        .profile-summary p,
+        .experience-item p,
+        .video-description,
+        .accomplishment-item p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Fix video container duplication and standardize */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Standardize responsive behavior */
+        @media (max-width: 768px) {
+            .card {
+                padding: 1.5rem;
+                margin: 1.5rem 0;
+            }
+
+            .profile-summary,
+            .experience-item,
+            .tedx-container,
+            .accomplishment-item {
+                padding: 1.2rem;
+                margin: 0.8rem 0;
+            }
+
+            .card h2 {
+                font-size: 1.6rem;
+            }
+
+            .experience-item h3,
+            .accomplishment-item h3 {
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1109,19 +1296,19 @@
             </div>
         </header>
 
-        <section class="card profile-summary">
+        <section class="card">
             <h2>Profile Summary</h2>
-            <p>
-                <span class="key-highlight">Strategic HR Specialist</span> with <span class="key-highlight">6+ years</span> of experience delivering transformative results in HR operations through <span class="key-highlight">data-driven solutions</span>, <span class="key-highlight">process automation</span>, and <span class="key-highlight">strategic insights</span>. Expert in leveraging advanced tools like <span class="key-highlight">ChatGPT API</span> and <span class="key-highlight">Google Apps Script</span> to streamline processes, reduce inefficiencies, and enable strategic decision-making. Proven ability to align HR initiatives with business objectives, drive measurable outcomes, and lead high-impact projects. Now poised to take on roles where innovation and leadership converge to shape organizational success.
-            </p>
-            <div class="profile-tags">
-                <span class="profile-tag">HR Analytics</span>
-                <span class="profile-tag">Process Automation</span>
-                <span class="profile-tag">Talent Intelligence</span>
-                <span class="profile-tag">Strategic Planning</span>
-                <span class="profile-tag">Data Visualization</span>
-                <span class="profile-tag">Google Apps Script</span>
-                <span class="profile-tag">ChatGPT API</span>
+            <div class="profile-summary">
+                <p>Strategic <span class="key-highlight">HR Specialist</span> with <span class="key-highlight">6+ years</span> of experience delivering transformative results in HR operations through <span class="key-highlight">data-driven solutions</span>, <span class="key-highlight">process automation</span>, and <span class="key-highlight">strategic insights</span>. Expert in leveraging advanced tools like <span class="key-highlight">ChatGPT API</span> and <span class="key-highlight">Google Apps Script</span> to streamline processes, reduce inefficiencies, and enable strategic decision-making. Proven ability to align HR initiatives with business objectives, drive measurable outcomes, and lead high-impact projects. Now poised to take on roles where innovation and leadership converge to shape organizational success.</p>
+                <div class="profile-tags">
+                    <span class="profile-tag">HR Analytics</span>
+                    <span class="profile-tag">Process Automation</span>
+                    <span class="profile-tag">Talent Intelligence</span>
+                    <span class="profile-tag">Strategic Planning</span>
+                    <span class="profile-tag">Data Visualization</span>
+                    <span class="profile-tag">Google Apps Script</span>
+                    <span class="profile-tag">ChatGPT API</span>
+                </div>
             </div>
         </section>
 
@@ -1147,7 +1334,7 @@
                 <h3>HR Business Partner</h3>
                 <p class="company">Reliance Jio Infocomm Limited, Madurai India | 02/2019 to 07/2022</p>
                 <ul style="text-align: justify">
-                    <li>HR Business Partner for over <span class="metric-highlight">800</span> employees, aligning HR initiatives with business objectives to ensure seamless
+                    <li>HR Business Partner for over <span class="metric-highlight">800+</span> employees, aligning HR initiatives with business objectives to ensure seamless
                     integration between people strategy and operational goals.</li>
                     <li>Implemented data-driven retention strategies, resulting in a <span class="metric-highlight">23%</span> reduction in turnover across key departments by
                     addressing employee engagement and improving retention frameworks.</li>
@@ -1230,7 +1417,7 @@
             <h2>Watch my TEDx Talk</h2>
             <div class="tedx-container">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/K70eu5gl4qQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/K70eu5gl4qQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <p class="video-description">In this TEDx talk, I explore the positive impact of gaming on social connections, trust building, and emotional support. These insights have influenced my approach to HR strategies, demonstrating how unconventional perspectives can enhance workplace dynamics.</p>
             </div>
