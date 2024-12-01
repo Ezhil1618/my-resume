@@ -1145,7 +1145,11 @@
             let currentGeometryIndex = 0;
             let nextGeometryIndex = 1;
             let morphProgress = 0;
-            const morphDuration = 6; // Longer duration for smoother transitions
+            const morphDuration = 6; // Duration of the morphing transition
+            const holdDuration = 4;  // Duration to hold each shape
+            let isHolding = false;   // Flag to track if we're in hold state
+            let holdTime = 0;        // Counter for hold duration
+            let cachedVertices = null; // Store vertices for hold phase
 
             function updateVertices() {
                 const currentGeometry = geometries[currentGeometryIndex];
@@ -1156,34 +1160,58 @@
                 const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
                 const smoothProgress = easeInOutCubic(morphProgress);
 
-                for (let i = 0; i < positions.length; i += 3) {
-                    const currentPos = new THREE.Vector3(
-                        currentGeometry.attributes.position.array[i],
-                        currentGeometry.attributes.position.array[i + 1],
-                        currentGeometry.attributes.position.array[i + 2]
-                    );
-                    const nextPos = new THREE.Vector3(
-                        nextGeometry.attributes.position.array[i],
-                        nextGeometry.attributes.position.array[i + 1],
-                        nextGeometry.attributes.position.array[i + 2]
-                    );
-
-                    // Spherical interpolation for smoother rotation
-                    currentPos.normalize();
-                    nextPos.normalize();
-                    const angle = currentPos.angleTo(nextPos);
-                    const axis = new THREE.Vector3().crossVectors(currentPos, nextPos).normalize();
-                    
-                    if (angle > 0.001) {  // Only apply spherical interpolation if points are different
-                        currentPos.applyAxisAngle(axis, angle * smoothProgress);
+                if (isHolding) {
+                    // Use cached vertices during hold phase
+                    if (!cachedVertices) {
+                        cachedVertices = new Float32Array(positions.length);
+                        for (let i = 0; i < positions.length; i += 3) {
+                            const vertex = new THREE.Vector3(
+                                currentGeometry.attributes.position.array[i],
+                                currentGeometry.attributes.position.array[i + 1],
+                                currentGeometry.attributes.position.array[i + 2]
+                            ).normalize().multiplyScalar(12);
+                            
+                            cachedVertices[i] = vertex.x;
+                            cachedVertices[i + 1] = vertex.y;
+                            cachedVertices[i + 2] = vertex.z;
+                        }
                     }
+                    // Copy cached vertices to positions
+                    positions.set(cachedVertices);
+                } else {
+                    // Clear cached vertices when not holding
+                    cachedVertices = null;
                     
-                    // Scale back to original size
-                    currentPos.multiplyScalar(12);
-                    
-                    positions[i] = currentPos.x;
-                    positions[i + 1] = currentPos.y;
-                    positions[i + 2] = currentPos.z;
+                    for (let i = 0; i < positions.length; i += 3) {
+                        const currentPos = new THREE.Vector3(
+                            currentGeometry.attributes.position.array[i],
+                            currentGeometry.attributes.position.array[i + 1],
+                            currentGeometry.attributes.position.array[i + 2]
+                        );
+
+                        const nextPos = new THREE.Vector3(
+                            nextGeometry.attributes.position.array[i],
+                            nextGeometry.attributes.position.array[i + 1],
+                            nextGeometry.attributes.position.array[i + 2]
+                        );
+
+                        // Spherical interpolation for smoother rotation
+                        currentPos.normalize();
+                        nextPos.normalize();
+                        const angle = currentPos.angleTo(nextPos);
+                        const axis = new THREE.Vector3().crossVectors(currentPos, nextPos).normalize();
+                        
+                        if (angle > 0.001) {  // Only apply spherical interpolation if points are different
+                            currentPos.applyAxisAngle(axis, angle * smoothProgress);
+                        }
+                        
+                        // Scale back to original size
+                        currentPos.multiplyScalar(12);
+                        
+                        positions[i] = currentPos.x;
+                        positions[i + 1] = currentPos.y;
+                        positions[i + 2] = currentPos.z;
+                    }
                 }
 
                 geometry.attributes.position.needsUpdate = true;
@@ -1229,12 +1257,26 @@
 
                 requestAnimationFrame(animate);
 
-                // Update morph progress with smoother transition
-                morphProgress += deltaTime / morphDuration;
-                if (morphProgress >= 1) {
-                    morphProgress = 0;
-                    currentGeometryIndex = nextGeometryIndex;
-                    nextGeometryIndex = (nextGeometryIndex + 1) % geometries.length;
+                if (isHolding) {
+                    // Update hold time
+                    holdTime += deltaTime;
+                    if (holdTime >= holdDuration) {
+                        // Reset for next transition
+                        isHolding = false;
+                        holdTime = 0;
+                        morphProgress = 0;
+                    }
+                } else {
+                    // Update morph progress
+                    morphProgress += deltaTime / morphDuration;
+                    if (morphProgress >= 1) {
+                        // Start hold phase
+                        isHolding = true;
+                        morphProgress = 1;
+                        // Update indices only after hold phase
+                        currentGeometryIndex = nextGeometryIndex;
+                        nextGeometryIndex = (nextGeometryIndex + 1) % geometries.length;
+                    }
                 }
 
                 updateVertices();
