@@ -458,22 +458,33 @@
             font-weight: 600;
         }
 
+        /* Enhanced Skills Section Styling */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
             margin-top: 1.5rem;
+            justify-items: center;
+            align-items: center;
         }
 
         .skill-item {
-            background: rgba(100, 255, 218, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
+            background: rgba(16, 33, 65, 0.4);
+            padding: 1.2rem;
+            border-radius: 12px;
             text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
         }
 
         .skill-item::before {
@@ -483,18 +494,53 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.05), transparent);
             transform: translateX(-100%);
             transition: transform 0.6s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
         }
 
         .skill-item:hover::before {
             transform: translateX(100%);
         }
 
-        .skill-item:hover {
-            transform: translateY(-5px);
-            background: rgba(100, 255, 218, 0.2);
+        .skill-main {
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            text-align: center;
+        }
+
+        .skill-sub {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .skill-item {
+                padding: 1rem;
+            }
+
+            .skill-main {
+                font-size: 1rem;
+            }
+
+            .skill-sub {
+                font-size: 0.85rem;
+            }
         }
 
         .education-item {
@@ -877,6 +923,63 @@
                 margin-bottom: 1.5rem;
             }
         }
+
+        /* Profile Summary styling */
+        .profile-summary {
+            background: rgba(16, 33, 65, 0.4);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            line-height: 1.8;
+        }
+
+        .profile-summary p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .key-highlight {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .profile-tag {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-tag:hover {
+            background: rgba(100, 255, 218, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .profile-summary {
+                padding: 1.5rem;
+                margin: 1.5rem 0;
+            }
+
+            .profile-tags {
+                gap: 0.6rem;
+            }
+
+            .profile-tag {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -909,15 +1012,20 @@
             </div>
         </header>
 
-        <section class="card">
-            <h2>Professional Summary</h2>
-            <p style="text-align: justify">
-                Dynamic and results-driven professional with over 6 years of proven expertise in transforming HR operations through data
-                analytics, automation, and strategic insights. With a strong foundation in workforce optimization and process efficiency, I have
-                a track record of driving measurable improvements that enhance organizational performance. Armed with advanced knowledge from
-                one of India's premier business institutions, I bring a unique blend of technical prowess and strategic acumen to solve complex
-                business challenges, now seeking to channel my expertise into a Full Analyst Role.
+        <section class="card profile-summary">
+            <h2>Profile Summary</h2>
+            <p>
+                <span class="key-highlight">Strategic HR Specialist</span> with <span class="key-highlight">6+ years</span> of experience delivering transformative results in HR operations through <span class="key-highlight">data-driven solutions</span>, <span class="key-highlight">process automation</span>, and <span class="key-highlight">strategic insights</span>. Expert in leveraging advanced tools like <span class="key-highlight">ChatGPT API</span> and <span class="key-highlight">Google Apps Script</span> to streamline processes, reduce inefficiencies, and enable strategic decision-making. Proven ability to align HR initiatives with business objectives, drive measurable outcomes, and lead high-impact projects. Now poised to take on roles where innovation and leadership converge to shape organizational success.
             </p>
+            <div class="profile-tags">
+                <span class="profile-tag">HR Analytics</span>
+                <span class="profile-tag">Process Automation</span>
+                <span class="profile-tag">Talent Intelligence</span>
+                <span class="profile-tag">Strategic Planning</span>
+                <span class="profile-tag">Data Visualization</span>
+                <span class="profile-tag">Google Apps Script</span>
+                <span class="profile-tag">ChatGPT API</span>
+            </div>
         </section>
 
         <section class="card">
@@ -934,6 +1042,8 @@
                     recruitment strategies by <span class="metric-highlight">20%</span>, optimizing candidate targeting.</li>
                     <li>Engineered a headcount forecasting model to support strategic workforce planning, enabling scenario simulations and
                     improving staffing efficiency by <span class="metric-highlight">25%</span>, ensuring alignment with future business needs.</li>
+                    <li>Developed a document validation framework using ChatGPT API and Google Apps Script, enabling intelligent validation and streamlining document workflows,
+                        significantly reducing manual errors.</li>
                 </ul>
             </div>
             <div class="experience-item">
@@ -969,14 +1079,38 @@
         <section class="card">
             <h2>Skills</h2>
             <div class="skills-grid">
-                <div class="skill-item">Data Analysis & Visualization</div>
-                <div class="skill-item">HR Analytics & Reporting</div>
-                <div class="skill-item">Process Automation</div>
-                <div class="skill-item">Strategic Workforce Planning</div>
-                <div class="skill-item">Talent Intelligence</div>
-                <div class="skill-item">HRIS Implementation</div>
-                <div class="skill-item">Employee Engagement</div>
-                <div class="skill-item">Visualization Tools</div>
+                <div class="skill-item">
+                    <div class="skill-main">Data Analysis & Visualization</div>
+                    <div class="skill-sub">Looker Studio, Power BI, Tableau</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-main">HR Analytics & Reporting</div>
+                    <div class="skill-sub">Metrics Analysis, KPI Tracking, Dashboards</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-main">Process Automation</div>
+                    <div class="skill-sub">Google Apps Script, Advanced Excel</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-main">Strategic Workforce Planning</div>
+                    <div class="skill-sub">Headcount Forecasting, Resource Optimization</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-main">AI & Prompt Engineering</div>
+                    <div class="skill-sub">ChatGPT API, LLM Integration</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-main">Talent Intelligence</div>
+                    <div class="skill-sub">Skill Mapping, Market Analysis</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-main">Employee Engagement</div>
+                    <div class="skill-sub">Program Design, Retention Strategies</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-main">Workforce Planning</div>
+                    <div class="skill-sub">Talent Management, Succession Planning</div>
+                </div>
             </div>
         </section>
 
@@ -1024,7 +1158,7 @@
     <footer class="footer-section">
         <div class="footer-content">
             <h2 class="footer-title">Let's Connect</h2>
-            <p class="footer-subtitle">Interested in discussing HR automation, data analytics, or gaming's impact on workplace dynamics?</p>
+            <p class="footer-subtitle">Interested in HR automation, data analytics, or leveraging technology to drive organizational transformation? Let's have a conversation!</p>
             <div class="cta-buttons">
                 <a href="mailto:ezhilarasan1618@gmail.com" class="cta-button">
                     <i class="fas fa-envelope"></i>
