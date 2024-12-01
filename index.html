@@ -6,6 +6,7 @@
     <title>Interactive Resume</title>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #2a3f54;
@@ -47,8 +48,13 @@
 
         .header {
             text-align: center;
-            margin: 4rem 0;
-            position: relative;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease-out;
         }
 
         .profile-container {
@@ -56,30 +62,70 @@
             width: 200px;
             height: 200px;
             margin: 0 auto 2rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(0, 255, 255, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            }
         }
 
         .profile-img {
             width: 100%;
             height: 100%;
-            border-radius: 15px;
             object-fit: cover;
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
         }
 
-        .floating-element {
-            position: absolute;
+        .profile-container:hover .profile-img {
+            transform: scale(1.1);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-info a, .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-info a:hover {
             background: var(--accent-color);
-            border-radius: 50%;
-            filter: blur(1px);
-            animation: float 6s ease-in-out infinite;
-            opacity: 0.2;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        .contact-info i {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .contact-info a:hover i {
+            color: var(--bg-dark);
         }
 
         .card {
@@ -185,57 +231,6 @@
         .skill-item:hover {
             transform: translateY(-5px);
             background: rgba(100, 255, 218, 0.2);
-        }
-
-        .contact-info {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-info a, .contact-info span {
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            opacity: 0.8;
-        }
-
-        .contact-info a:hover {
-            color: var(--accent-color);
-            opacity: 1;
-        }
-
-        .title {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-        }
-
-        .company, .institution {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .experience-item ul, .accomplishments-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .experience-item li, .accomplishments-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.6;
-        }
-
-        .experience-item li::before, .accomplishments-list li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
         }
 
         .education-item {
@@ -427,10 +422,10 @@
             <h1>EZHIL ARASAN M</h1>
             <p class="title">HR Automation & Talent Intelligence Specialist</p>
             <div class="contact-info">
-                <a href="mailto:ezhilarasan1618@gmail.com">ezhilarasan1618@gmail.com</a>
-                <a href="tel:+918098833777">+91 80988 33777</a>
-                <a href="https://www.linkedin.com/in/ezhil-arasan-ez1618/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <span>Chennai, India</span>
+                <a href="mailto:ezhilarasan1618@gmail.com"><i class="fas fa-envelope"></i>ezhilarasan1618@gmail.com</a>
+                <a href="tel:+918098833777"><i class="fas fa-phone"></i>+91 80988 33777</a>
+                <a href="https://www.linkedin.com/in/ezhil-arasan-ez1618/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+                <span><i class="fas fa-map-marker-alt"></i>Chennai, India</span>
             </div>
         </header>
 
