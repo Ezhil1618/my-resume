@@ -1503,76 +1503,96 @@
         }
 
         /* Skills section */
-        .skills-grid {
+        .skills-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(2, auto);
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
-            margin: 2rem 0;
-            justify-items: center;
-            align-items: start;
+            padding: 1rem;
         }
 
-        .skill-item {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(16, 33, 65, 0.4);
+        .skill-category {
+            background: rgba(17, 34, 64, 0.6);
             border-radius: 15px;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 1.5rem;
             border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            user-select: none;
         }
 
-        .skill-item.active {
+        .skill-category:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.1);
             border-color: var(--accent-color);
-            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
         }
 
-        .skill-item.active::before {
-            transform: translateX(100%);
-        }
-
-        .skill-item::before {
+        .skill-category::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.05), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.03));
+            pointer-events: none;
+        }
+
+        .skill-header {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-item {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            padding: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
         }
 
         .skill-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
-        }
-
-        .skill-item:hover::before {
-            transform: translateX(100%);
-        }
-
-        @media (max-width: 1200px) {
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: auto;
-            }
+            color: var(--accent-color);
+            transform: translateX(5px);
         }
 
         @media (max-width: 768px) {
-            .skills-grid {
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .skill-list {
                 grid-template-columns: 1fr;
             }
         }
@@ -1610,15 +1630,16 @@
         <section class="card">
             <h2>Profile Summary</h2>
             <div class="profile-summary">
-                <p>Strategic <span class="key-highlight">HR Specialist</span> with <span class="key-highlight">6+ years</span> of experience delivering transformative results in HR operations through <span class="key-highlight">data-driven solutions</span>, <span class="key-highlight">process automation</span>, and <span class="key-highlight">strategic insights</span>. Expert in leveraging advanced tools like <span class="key-highlight">ChatGPT API</span> and <span class="key-highlight">Google Apps Script</span> to streamline processes, reduce inefficiencies, and enable strategic decision-making. Proven ability to align HR initiatives with business objectives, drive measurable outcomes, and lead high-impact projects. Now poised to take on roles where innovation and leadership converge to shape organizational success.</p>
+                <p>A strategic HR leader with 6+ years of expertise in transforming HR operations through automation, AI, and data-driven solutions. Skilled in leveraging Google Apps Script and Gen AI APIs to streamline processes, drive compliance, and align HR initiatives with organizational goals. Proven track record of delivering measurable cost savings, improving workforce efficiency, and enabling strategic decision-making. Seeking a senior management role to innovate and shape transformative HR solutions.</p>
                 <div class="profile-tags">
                     <span class="profile-tag">HR Analytics</span>
                     <span class="profile-tag">Process Automation</span>
-                    <span class="profile-tag">Talent Intelligence</span>
+                    <span class="profile-tag">Gen AI Integration</span>
                     <span class="profile-tag">Strategic Planning</span>
                     <span class="profile-tag">Data Visualization</span>
                     <span class="profile-tag">Google Apps Script</span>
                     <span class="profile-tag">ChatGPT API</span>
+                    <span class="profile-tag">Talent Intelligence</span>
                 </div>
             </div>
         </section>
@@ -1626,31 +1647,26 @@
         <section class="card">
             <h2>Experience</h2>
             <div class="experience-item">
-                <h3>HR Analytics & Automation Specialist</h3>
-                <p class="company">Intellect Design Arena Ltd, Chennai India | 07/2022 to Current</p>
-                <ul style="text-align: justify">
-                    <li>Developed and deployed a comprehensive HR automation solution using Google Apps Script, automating complex
-                    manual data management processes. This resulted in a <span class="metric-highlight">30%</span> reduction in processing time, eliminated data discrepancies,
-                    and created a self-service platform for real-time reporting and data validation.</li>
-                    <li>Designed and led the Talent Intelligence & Skill Mapping initiative, creating a robust analytics framework that mapped
-                    the Indian IT talent landscape across various roles and technologies. This framework enabled HR leaders to improve
-                    recruitment strategies by <span class="metric-highlight">20%</span>, optimizing candidate targeting.</li>
-                    <li>Engineered a headcount forecasting model to support strategic workforce planning, enabling scenario simulations and
-                    improving staffing efficiency by <span class="metric-highlight">25%</span>, ensuring alignment with future business needs.</li>
-                    <li>Developed a document validation framework using ChatGPT API and Google Apps Script, enabling intelligent validation and streamlining document workflows,
-                        significantly reducing manual errors.</li>
+                <h3>HR Analytics & Automation | Special Projects</h3>
+                <p class="company">Intellect Design Arena Ltd, Chennai, India | 07/2022 – Current</p>
+                <ul>
+                    <li>Achieved a 30% reduction in HR process cycle time by engineering comprehensive automation solutions using Google Apps Script, streamlining complex manual data management and eliminating data discrepancies.</li>
+                    <li>Saved approximately 2000+ hours saved annually in HR administrative time by designing and deploying an automated new hire documentation management system, addressing audit findings and improving onboarding efficiency for ~600 annual hires.</li>
+                    <li>Reduced increment letter generation time by over 99% (from 2 days to under 1 hour) by leveraging Google Apps Script to develop an automated system, eliminating manual effort and ensuring zero errors, while also contributing to cost savings by reducing reliance on premium software subscriptions.</li>
+                    <li>Freed up 100+ hours of analytical resources by developing and implementing a suite of automated HR dashboards using Google Workspace tools, enabling more timely and data-driven decision-making.</li>
+                    <li>Spearheaded the development of an intelligent employee profile database, envisioning a centralized and easily searchable talent repository to enhance resource management and strategic workforce planning, leveraging Google Apps Script and Gen AI APIs (ChatGPT/Gemini) for automated data extraction and organization.</li>
+                    <li>Designed and led the Talent Intelligence & Skill Mapping initiative, creating a robust analytics framework that mapped the Indian IT talent landscape, enabling a 20% improvement in recruitment strategies through optimized candidate targeting.</li>
+                    <li>Improved staffing efficiency by 25% by engineering a headcount forecasting model to support strategic workforce planning, enabling scenario simulations and better alignment with future business needs.</li>
+                    <li>Streamlined document workflows and significantly reduced manual errors by developing a document validation framework using ChatGPT API and Google Apps Script.</li>
                 </ul>
             </div>
             <div class="experience-item">
                 <h3>HR Business Partner</h3>
-                <p class="company">Reliance Jio Infocomm Limited, Madurai India | 02/2019 to 07/2022</p>
-                <ul style="text-align: justify">
-                    <li>HR Business Partner for over <span class="metric-highlight">800</span> employees, aligning HR initiatives with business objectives to ensure seamless
-                    integration between people strategy and operational goals.</li>
-                    <li>Implemented data-driven retention strategies, resulting in a <span class="metric-highlight">23%</span> reduction in turnover across key departments by
-                    addressing employee engagement and improving retention frameworks.</li>
-                    <li>Streamlined recruitment processes, reducing time-to-hire by <span class="metric-highlight">17%</span> for critical roles, ensuring faster onboarding of
-                    high-impact talent and optimizing workforce efficiency.</li>
+                <p class="company">Reliance Jio Infocomm Limited, Madurai India | 02/2019 – 07/2022</p>
+                <ul>
+                    <li>Served as the primary HR Business Partner for over 800 employees, strategically aligning HR initiatives with overarching business objectives to ensure seamless integration between people strategy and operational goals.</li>
+                    <li>Achieved a 23% reduction in employee turnover across key departments by implementing data-driven retention strategies focused on enhancing employee engagement and improving retention frameworks.</li>
+                    <li>Improved time-to-hire by 17% for critical roles by streamlining recruitment processes, ensuring faster onboarding of high-impact talent and optimizing overall workforce efficiency.</li>
                 </ul>
             </div>
         </section>
@@ -1673,38 +1689,39 @@
 
         <section class="card">
             <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-main">Data Analysis & Visualization</div>
-                    <div class="skill-sub">Looker Studio, Power BI, Tableau</div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3 class="skill-header">Technical Skills</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Google Apps Script</li>
+                        <li class="skill-item">Gen AI APIs (ChatGPT, Gemini)</li>
+                        <li class="skill-item">LLM Integration</li>
+                        <li class="skill-item">Looker Studio</li>
+                        <li class="skill-item">Power BI</li>
+                        <li class="skill-item">Tableau</li>
+                        <li class="skill-item">Advanced Excel</li>
+                        <li class="skill-item">Data Analysis</li>
+                        <li class="skill-item">Process Automation</li>
+                        <li class="skill-item">Dashboard Development</li>
+                        <li class="skill-item">Data Validation</li>
+                    </ul>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-main">HR Analytics & Reporting</div>
-                    <div class="skill-sub">Metrics Analysis, KPI Tracking, Dashboards</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-main">Process Automation</div>
-                    <div class="skill-sub">Google Apps Script, Advanced Excel</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-main">Strategic Workforce Planning</div>
-                    <div class="skill-sub">Headcount Forecasting, Resource Optimization</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-main">AI & Prompt Engineering</div>
-                    <div class="skill-sub">ChatGPT API, LLM Integration</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-main">Talent Intelligence</div>
-                    <div class="skill-sub">Skill Mapping, Market Analysis</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-main">Employee Engagement</div>
-                    <div class="skill-sub">Program Design, Retention Strategies</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-main">Workforce Planning</div>
-                    <div class="skill-sub">Talent Management, Succession Planning</div>
+                <div class="skill-category">
+                    <h3 class="skill-header">Core HR Skills</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Strategic Workforce Planning</li>
+                        <li class="skill-item">Talent Management</li>
+                        <li class="skill-item">Succession Planning</li>
+                        <li class="skill-item">Talent Intelligence</li>
+                        <li class="skill-item">Skill Mapping</li>
+                        <li class="skill-item">Market Analysis</li>
+                        <li class="skill-item">Employee Engagement</li>
+                        <li class="skill-item">Program Design</li>
+                        <li class="skill-item">Retention Strategies</li>
+                        <li class="skill-item">HR Analytics & Reporting</li>
+                        <li class="skill-item">Metrics Analysis</li>
+                        <li class="skill-item">KPI Tracking</li>
+                    </ul>
                 </div>
             </div>
         </section>
